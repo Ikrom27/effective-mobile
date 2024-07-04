@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/ticketsFragment"
-        android:name="com.ikrom.effective_mobile.TicketsFragment"
+        android:name="com.ikrom.effective_mobile.screens.TicketsFragment"
         android:label="@string/tickets_screen_label"
         tools:layout="@layout/fragment_tickets" />
 
     <fragment
         android:id="@+id/hotelsFragment"
-        android:name="com.ikrom.effective_mobile.HotelsFragment"
+        android:name="com.ikrom.effective_mobile.screens.HotelsFragment"
         android:label="@string/hotels_screen_label"
         tools:layout="@layout/fragment_hotels" />
 
     <fragment
         android:id="@+id/shorterFragment"
-        android:name="com.ikrom.effective_mobile.ShorterFragment"
+        android:name="com.ikrom.effective_mobile.screens.ShorterFragment"
         android:label="@string/shorter_screen_label"
         tools:layout="@layout/fragment_shorter" />
 
     <fragment
         android:id="@+id/subscriptionsFragment"
-        android:name="com.ikrom.effective_mobile.SubscriptionsFragment"
+        android:name="com.ikrom.effective_mobile.screens.SubscriptionsFragment"
         android:label="@string/subscriptions_screen_label"
         tools:layout="@layout/fragment_subscriptions" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.ikrom.effective_mobile.ProfileFragment"
+        android:name="com.ikrom.effective_mobile.screens.ProfileFragment"
         android:label="@string/profile_screen_label"
         tools:layout="@layout/fragment_profile" />
 </navigation>

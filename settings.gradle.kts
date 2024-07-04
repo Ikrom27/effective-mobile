@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "effective mobile"
 include(":app")
- 
+include(":base_adapter")
