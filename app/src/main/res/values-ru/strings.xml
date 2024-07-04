@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tickets_screen_label">Авиабилеты</string>
+    <string name="hotels_screen_label">Отели</string>
+    <string name="shorter_screen_label">Короче</string>
+    <string name="subscriptions_screen_label">Подписки</string>
+    <string name="profile_screen_label">Профиль</string>
+</resources>

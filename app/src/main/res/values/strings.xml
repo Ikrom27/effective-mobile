@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name" translatable="false">effective mobile</string>
+    <string name="hello_blank_fragment" translatable="false">hello</string>
+    <!--- Screen label -->
+    <string name="tickets_screen_label">Tickets</string>
+    <string name="hotels_screen_label">Hotels</string>
+    <string name="shorter_screen_label">Shorter</string>
+    <string name="subscriptions_screen_label">Subscriptions</string>
+    <string name="profile_screen_label">Profile</string>
+</resources>
