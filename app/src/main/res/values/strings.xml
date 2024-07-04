@@ -7,4 +7,6 @@
     <string name="shorter_screen_label">Shorter</string>
     <string name="subscriptions_screen_label">Subscriptions</string>
     <string name="profile_screen_label">Profile</string>
+    <string name="travel_origin_hint">Откуда - Москва</string>
+    <string name="travel_destination_hint">Куда - Турция</string>
 </resources>

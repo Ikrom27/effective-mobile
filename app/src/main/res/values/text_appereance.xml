@@ -6,4 +6,9 @@
         <item name="android:textAlignment">center</item>
         <item name="lineHeight">26.4dp</item>
     </style>
+
+    <style name="travelInputAppearance">
+        <item name="android:textColorHint">@color/grey6</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikrom.base_adapter.CompositeAdapter
-import com.ikrom.effective_mobile.R
 import com.ikrom.effective_mobile.databinding.FragmentTicketsBinding
 import com.ikrom.effective_mobile.delegates.TextAdapter
 import com.ikrom.effective_mobile.delegates.TextItem
+import com.ikrom.effective_mobile.delegates.TravelPointsDelegate
+import com.ikrom.effective_mobile.delegates.TravelPointsItem
 
 class TicketsFragment : Fragment() {
     private lateinit var binding: FragmentTicketsBinding
     private val compositeAdapter = CompositeAdapter.Builder()
         .add(TextAdapter())
+        .add(TravelPointsDelegate())
         .build()
 
     override fun onCreateView(
@@ -43,6 +45,9 @@ class TicketsFragment : Fragment() {
     }
 
     fun setupAdapterData(){
-        compositeAdapter.addToEnd(TextItem("Поиск дешевых авиабилетов"))
+        if (compositeAdapter.itemCount == 0){
+            compositeAdapter.addToEnd(TextItem("Поиск дешевых авиабилетов"))
+            compositeAdapter.addToEnd(TravelPointsItem("", "", {}))
+        }
     }
 }
