@@ -23,5 +23,8 @@
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/navbar_colors"
+        app:itemTextColor="@color/navbar_colors"
+        app:itemActiveIndicatorStyle="@style/ShapeAppearance.Material3.Corner.None"
         app:menu="@menu/bottom_menu_screens" />
 </androidx.constraintlayout.widget.ConstraintLayout>

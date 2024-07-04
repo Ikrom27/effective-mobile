@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="black">#FF0C0C0C</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey1">#1d1e20</color>
+    <color name="grey2">#2f3035</color>
+    <color name="grey3">#2f3035</color>
+    <color name="grey4">#3e3f43</color>
+    <color name="grey5">#5e5f61</color>
+    <color name="grey6">#9f9f9f</color>
+    <color name="grey7">#dbdbdb</color>
+
+    <color name="blue">#2269bc</color>
+    <color name="dark_blue">#00427d</color>
+    <color name="green">#3a633b</color>
+    <color name="dark_green">#1e341f</color>
+    <color name="red">#ff5d5d</color>
+    <color name="orange">#f36e36</color>
+
+    <color name="menu_selected_icon">#ff2261BC</color>
+    <color name="menu_unselected_icon">@color/grey6</color>
 </resources>
