@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="MainText">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textFontWeight" tools:targetApi="p">600</item>
+        <item name="android:textAlignment">center</item>
+        <item name="lineHeight">26.4dp</item>
+    </style>
+</resources>
