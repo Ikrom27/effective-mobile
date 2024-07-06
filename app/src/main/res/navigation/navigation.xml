@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/ticketsFragment"
-        android:name="com.ikrom.effective_mobile.screens.TicketsFragment"
+        android:name="com.ikrom.feature_tickets.TicketsFragment"
         android:label="@string/tickets_screen_label"
         tools:layout="@layout/fragment_tickets" />
 
     <fragment
         android:id="@+id/hotelsFragment"
-        android:name="com.ikrom.feature_tickets.TicketsFragment"
+        android:name="com.ikrom.effective_mobile.screens.HotelsFragment"
         android:label="@string/hotels_screen_label" />
 
     <fragment

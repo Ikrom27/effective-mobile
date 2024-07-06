@@ -1,12 +1,12 @@
-package com.ikrom.effective_mobile.delegates
+package com.ikrom.feature_tickets.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ikrom.base_adapter.BaseDelegateAdapter
 import com.ikrom.base_adapter.model.AdapterItem
-import com.ikrom.effective_mobile.R
-import com.ikrom.effective_mobile.databinding.ItemTextBinding
+import com.ikrom.feature_tickets.R
+import com.ikrom.feature_tickets.databinding.ItemTextBinding
 
 data class TextItem(
     val text: String

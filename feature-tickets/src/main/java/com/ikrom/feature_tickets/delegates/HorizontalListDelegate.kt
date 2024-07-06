@@ -1,19 +1,19 @@
-package com.ikrom.effective_mobile.delegates
+package com.ikrom.feature_tickets.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ikrom.base_adapter.BaseAdapter
 import com.ikrom.base_adapter.BaseDelegateAdapter
 import com.ikrom.base_adapter.model.AdapterItem
-import com.ikrom.effective_mobile.R
-import com.ikrom.effective_mobile.databinding.ItemHorizontalListBinding
+import com.ikrom.feature_tickets.R
+import com.ikrom.feature_tickets.databinding.ItemHorizontalListBinding
 
 
 data class HorizontalListItem(
     val title: String,
-    val nestedItems: List<Any>,
-    val adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
+    val adapter: BaseAdapter<*>
 ): AdapterItem()
 
 
@@ -25,6 +25,7 @@ class HorizontalListDelegate:
         override fun bind(item: HorizontalListItem) {
             binding.title.text = item.title
             binding.recyclerView.layoutManager = LinearLayoutManager(binding.root.context)
+                .apply { orientation = LinearLayoutManager.HORIZONTAL }
             binding.recyclerView.adapter = item.adapter
         }
     }

@@ -1,6 +1,5 @@
 package com.ikrom.feature_tickets
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,19 +9,32 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ikrom.base_adapter.CompositeAdapter
+import com.ikrom.feature_tickets.delegates.TextAdapter
+import com.ikrom.feature_tickets.delegates.TextItem
+import com.ikrom.feature_tickets.delegates.TravelPointsDelegate
+import com.ikrom.feature_tickets.delegates.TravelPointsItem
+import com.ikrom.feature_tickets.databinding.FragmentTicketsBinding
+import com.ikrom.feature_tickets.delegates.ArtistsDelegate
+import com.ikrom.feature_tickets.delegates.HorizontalListDelegate
+import com.ikrom.feature_tickets.delegates.HorizontalListItem
 import dagger.Lazy
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class TicketsFragment : Fragment() {
 
     @Inject
     internal lateinit var ticketsViewModelFactory: Lazy<TicketsViewModel.Factory>
-
     private val ticketsViewModel: TicketsViewModel by viewModels {
         ticketsViewModelFactory.get()
     }
+    private lateinit var binding: FragmentTicketsBinding
+    private val compositeAdapter = CompositeAdapter.Builder()
+        .add(TextAdapter())
+        .add(TravelPointsDelegate())
+        .add(HorizontalListDelegate())
+        .build()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -34,22 +46,38 @@ class TicketsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        return inflater.inflate(R.layout.fragment_tickets, container, false)
+    ): View {
+        val view = setupBinding()
+        setupRecyclerView()
+        ticketsViewModel.updateArtistList()
+        return view
     }
 
-    @SuppressLint("CheckResult")
-    override fun onResume() {
-        super.onResume()
-        ticketsViewModel.repository.getArtistsList()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ artistApiResponse ->
-                val a = artistApiResponse.offers.size
-                val b = a
-            }, { throwable ->
-                // Handle error
-            })
+    private fun setupBinding(): View {
+        binding = FragmentTicketsBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    private fun setupRecyclerView(){
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = compositeAdapter
+    }
+
+    fun setupAdapterData(){
+        if (compositeAdapter.itemCount == 0){
+            compositeAdapter.addToPosition(0, TextItem("Поиск дешевых авиабилетов"))
+            compositeAdapter.addToPosition(1, TravelPointsItem("", "", {}))
+            ticketsViewModel.artistItem.observe(viewLifecycleOwner) { artists ->
+                compositeAdapter.addToPosition(2, item = HorizontalListItem(
+                    title = "С музакой",
+                    adapter = ArtistsDelegate().apply { setItems(artists) }
+                ))
+            }
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupAdapterData()
     }
 }

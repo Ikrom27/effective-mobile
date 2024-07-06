@@ -1,13 +1,12 @@
-package com.ikrom.effective_mobile.delegates
+package com.ikrom.feature_tickets.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import com.ikrom.base_adapter.BaseDelegateAdapter
 import com.ikrom.base_adapter.model.AdapterItem
-import com.ikrom.effective_mobile.R
-import com.ikrom.effective_mobile.databinding.ItemTravelPointsBinding
+import com.ikrom.feature_tickets.R
+import com.ikrom.feature_tickets.databinding.ItemTravelPointsBinding
 
 data class TravelPointsItem(
     val origin: String,
@@ -15,7 +14,8 @@ data class TravelPointsItem(
     override val onClick: (() -> Unit)
 ): AdapterItem()
 
-class TravelPointsDelegate: BaseDelegateAdapter<TravelPointsItem, TravelPointsDelegate.TravelPointsViewHolder>(TravelPointsItem::class.java) {
+class TravelPointsDelegate: BaseDelegateAdapter<TravelPointsItem, TravelPointsDelegate.TravelPointsViewHolder>(
+    TravelPointsItem::class.java) {
     inner class TravelPointsViewHolder(binding: ItemTravelPointsBinding): DelegateViewHolder<TravelPointsItem>(binding){
         override fun bind(item: TravelPointsItem) {
 
