@@ -51,5 +51,6 @@
         android:layout_marginTop="4dp"
         android:src="@drawable/ic_plane"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/town" />
+        app:layout_constraintTop_toBottomOf="@+id/town"
+        app:tint="@color/grey6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
