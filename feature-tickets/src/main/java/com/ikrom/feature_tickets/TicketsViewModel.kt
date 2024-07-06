@@ -1,10 +1,12 @@
 package com.ikrom.feature_tickets
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.ikrom.base_adapter.utils.PriceUtils
 import com.ikrom.data.Repository
 import com.ikrom.feature_tickets.delegates.ArtistItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -25,10 +27,12 @@ class TicketsViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .map {
                 it.offers.map { artistResponse ->
+                    Log.d("ViewModel", "${artistResponse.price.value}")
                     ArtistItem(
                         artistName = artistResponse.title,
-                        city = artistResponse.town,
-                        price = artistResponse.price.value
+                        town = artistResponse.town,
+                        price = PriceUtils.format(artistResponse.price.value),
+                        imageUrl = "file:///android_asset/${artistResponse.id}.png"
                     )
                 }
             }

@@ -21,6 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "effective mobile"
 include(":app")
-include(":base_adapter")
+include(":core-ui")
 include(":data")
 include(":feature-tickets")

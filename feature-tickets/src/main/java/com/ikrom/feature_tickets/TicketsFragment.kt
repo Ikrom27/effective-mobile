@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ikrom.base_adapter.CompositeAdapter
+import com.ikrom.base_adapter.adapters.CompositeAdapter
 import com.ikrom.feature_tickets.delegates.TextAdapter
 import com.ikrom.feature_tickets.delegates.TextItem
 import com.ikrom.feature_tickets.delegates.TravelPointsDelegate

@@ -3,7 +3,7 @@
     <item
         android:id="@+id/ticketsFragment"
         android:title="@string/tickets_screen_label"
-        android:icon="@drawable/ic_tickets"
+        android:icon="@drawable/ic_plane"
         />
     <item
         android:id="@+id/hotelsFragment"

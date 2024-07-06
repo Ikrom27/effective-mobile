@@ -1,5 +1,6 @@
 package com.ikrom.base_adapter
 
+import com.ikrom.base_adapter.utils.PriceUtils
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -9,9 +10,11 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class UtilsTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun priceUtilsTest() {
+        val price = 1555999
+        val newPrice = PriceUtils.format(price)
+        assertEquals("1 555 999", newPrice)
     }
 }

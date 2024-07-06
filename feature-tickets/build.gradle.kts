@@ -38,12 +38,13 @@ android {
 }
 
 dependencies {
+    implementation(libs.coil)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.rxandroid)
     implementation(libs.rxjava)
     implementation(project(":data"))
     implementation(libs.dagger)
-    implementation(project(":base_adapter"))
+    implementation(project(":core-ui"))
     kapt(libs.dagger.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
