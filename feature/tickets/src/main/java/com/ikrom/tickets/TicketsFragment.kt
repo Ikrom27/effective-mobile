@@ -76,14 +76,21 @@ class TicketsFragment : Fragment() {
     fun setupAdapterData(){
         if (compositeAdapter.itemCount == 0){
             compositeAdapter.addToPosition(0, TextItem("Поиск дешевых авиабилетов"))
-            compositeAdapter.addToPosition(1, TravelPointsItem("", "", {}))
+            compositeAdapter.addToPosition(1, getTravelPointsItem())
             ticketsViewModel.artistItem.observe(viewLifecycleOwner) { artists ->
                 compositeAdapter.addToPosition(2, item = HorizontalListItem(
                     adapter = ArtistsDelegate().apply { setItems(artists) }
                 ))
             }
-            compositeAdapter.addToPosition(3, getButtonsList())
         }
+    }
+
+    private fun getTravelPointsItem(): TravelPointsItem {
+        return TravelPointsItem(
+            defaultText = ticketsViewModel.originText,
+            onOriginChange = { ticketsViewModel.onOriginChange(it) },
+            onDestinationClick = {}
+        )
     }
 
     private fun getButtonsList(): HorizontalListItem {
@@ -110,5 +117,10 @@ class TicketsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapterData()
+    }
+
+    override fun onStop() {
+        ticketsViewModel.saveOrigin()
+        super.onStop()
     }
 }

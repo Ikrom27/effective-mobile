@@ -21,13 +21,14 @@ class TicketsViewModel @Inject constructor(
     private val _artistList = MutableLiveData<List<ArtistItem>>()
     val artistItem: LiveData<List<ArtistItem>> = _artistList
 
+    var originText: String = getLastOrigin()
+
     @SuppressLint("CheckResult")
     fun updateArtistList() {
         repository.getArtistsList()
             .subscribeOn(Schedulers.io())
             .map {
                 it.offers.map { artistResponse ->
-                    Log.d("ViewModel", "${artistResponse.price.value}")
                     ArtistItem(
                         artistName = artistResponse.title,
                         town = artistResponse.town,
@@ -40,6 +41,18 @@ class TicketsViewModel @Inject constructor(
             .subscribe({
                 _artistList.postValue(it)
             }, {})
+    }
+
+    fun getLastOrigin(): String {
+        return repository.getSavedOrigin()
+    }
+
+    fun onOriginChange(text: String){
+        originText = text
+    }
+
+    fun saveOrigin(){
+        repository.saveOrigin(originText)
     }
 
     class Factory @Inject constructor(

@@ -1,6 +1,9 @@
 package com.ikrom.effective_mobile.di
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import com.ikrom.data.Repository
 import com.ikrom.data.di.ArtsitService
 import com.ikrom.tickets.TicketsDeps
@@ -28,6 +31,15 @@ class AppModule {
     @Provides
     @AppScope
     fun provideArtistService() = ArtsitService()
+
+    @Provides
+    @AppScope
+    fun provideSharedPreferences(
+        application: Application
+    ): SharedPreferences {
+        val context = application.applicationContext
+        return context.getSharedPreferences("effectiveMobile", Context.MODE_PRIVATE)
+    }
 }
 
 @Scope

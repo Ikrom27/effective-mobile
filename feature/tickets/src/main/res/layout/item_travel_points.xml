@@ -47,7 +47,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                style="@style/nonClickable.travelInput"
+                android:id="@+id/originText"
+                style="@style/travelInput"
                 android:hint="@string/travel_origin_hint"
                 app:layout_constraintBottom_toTopOf="@+id/separator"
                 app:layout_constraintEnd_toEndOf="@+id/separator"
@@ -55,7 +56,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                style="@style/nonClickable.travelInput"
+                android:id="@+id/destinationText"
+                style="@style/travelInput"
                 android:hint="@string/travel_destination_hint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/separator"
