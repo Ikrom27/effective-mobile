@@ -15,6 +15,6 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        com.ikrom.tickets.TicketsDepsStore.deps = appComponent
+        TicketsDepsStore.deps = appComponent
     }
 }

@@ -12,7 +12,7 @@ import javax.inject.Scope
 
 @AppScope
 @Component(modules = [AppModule::class])
-interface AppComponent: com.ikrom.tickets.TicketsDeps {
+interface AppComponent: TicketsDeps {
     override val repository: Repository
 
     @Component.Builder
