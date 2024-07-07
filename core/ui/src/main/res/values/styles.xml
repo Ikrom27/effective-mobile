@@ -20,7 +20,7 @@
     <style name="travelCard">
         <item name="android:layout_width">296dp</item>
         <item name="android:layout_height">90dp</item>
-        <item name="android:background">@drawable/bg_travel_points_card</item>
+        <item name="android:background">@drawable/bg_rectangle_rounded_16</item>
         <item name="elevation">4dp</item>
     </style>
     

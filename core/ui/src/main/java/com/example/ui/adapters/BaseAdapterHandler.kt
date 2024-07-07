@@ -60,7 +60,7 @@ abstract class BaseAdapterHandler<T: AdapterItem, VH: RecyclerView.ViewHolder>: 
         notifyItemRangeChanged(startPosition, mItems.size)
     }
 
-    fun addToEnd(item: T){
+    fun add(item: T){
         addToPosition(mItems.size, item)
     }
 }

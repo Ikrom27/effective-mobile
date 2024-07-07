@@ -7,4 +7,8 @@
     <!-- Buttons -->
     <dimen name="btn_small_height">33dp</dimen>
     <dimen name="btn_small_width">33dp</dimen>
+
+    <!-- Image -->
+    <dimen name="icon_small">16dp</dimen>
+    <dimen name="icon_medium">24dp</dimen>
 </resources>

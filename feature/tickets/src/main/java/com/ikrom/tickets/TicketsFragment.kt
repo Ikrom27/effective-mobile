@@ -12,13 +12,13 @@ import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.adapters.CompositeAdapter
 import com.example.ui.adapters.item_decorations.MarginItemDecoration
-import com.example.utils.extensions.dpToPx
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
-import com.ikrom.tickets.delegates.ArtistsDelegate
+import com.ikrom.tickets.delegates.Flight
+import com.ikrom.tickets.delegates.FlightsDelegate
+import com.ikrom.tickets.delegates.FlightsItem
 import com.ikrom.tickets.delegates.HorizontalListDelegate
 import com.ikrom.tickets.delegates.HorizontalListItem
 import com.ikrom.tickets.delegates.TextAdapter
-import com.ikrom.tickets.delegates.TextItem
 import com.ikrom.tickets.delegates.TravelPointsDelegate
 import com.ikrom.tickets.delegates.TravelPointsItem
 import com.ikrom.tickets.delegates.buttons.DateBtnDelegate
@@ -44,6 +44,7 @@ class TicketsFragment : Fragment() {
         .add(TextAdapter())
         .add(TravelPointsDelegate())
         .add(HorizontalListDelegate())
+        .add(FlightsDelegate())
         .build()
 
     override fun onAttach(context: Context) {
@@ -75,13 +76,21 @@ class TicketsFragment : Fragment() {
 
     fun setupAdapterData(){
         if (compositeAdapter.itemCount == 0){
-            compositeAdapter.addToPosition(0, TextItem("Поиск дешевых авиабилетов"))
-            compositeAdapter.addToPosition(1, getTravelPointsItem())
-            ticketsViewModel.artistItem.observe(viewLifecycleOwner) { artists ->
-                compositeAdapter.addToPosition(2, item = HorizontalListItem(
-                    adapter = ArtistsDelegate().apply { setItems(artists) }
-                ))
-            }
+//            compositeAdapter.addToPosition(0, TextItem("Поиск дешевых авиабилетов"))
+            compositeAdapter.add(getTravelPointsItem())
+//            ticketsViewModel.artistItem.observe(viewLifecycleOwner) { artists ->
+//                compositeAdapter.addToPosition(2, item = HorizontalListItem(
+//                    adapter = ArtistsDelegate().apply { setItems(artists) }
+//                ))
+//            }
+            compositeAdapter.add(getButtonsList())
+            compositeAdapter.add(FlightsItem(
+                flights = listOf(
+                    Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231),
+                    Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231),
+                    Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231)
+                )
+            ))
         }
     }
 
@@ -101,9 +110,9 @@ class TicketsFragment : Fragment() {
                 .add(PassengersNumBtnDelegate())
                 .add(ReturnFlightBtnDelegate())
                 .build().apply {
-                    addToEnd(ReturnFlightBtnItem("обратно"))
-                    addToEnd(DateBtnItem(24, "фев", "суб"))
-                    addToEnd(PassengersNumBtnItem(1, "эконом"))
+                    add(ReturnFlightBtnItem("обратно"))
+                    add(DateBtnItem(24, "фев", "суб"))
+                    add(PassengersNumBtnItem(1, "эконом"))
                 },
             itemDecoration = MarginItemDecoration(
                 startSpace = margin.toInt(),
