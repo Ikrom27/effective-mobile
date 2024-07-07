@@ -6,10 +6,11 @@
     android:layout_height="wrap_content"
     android:paddingTop="36dp">
     <androidx.cardview.widget.CardView
-        android:layout_width="329dp"
+        android:layout_width="match_parent"
         android:layout_height="122dp"
         android:backgroundTint="@color/grey3"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
         app:cardCornerRadius="@dimen/travel_point_card_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

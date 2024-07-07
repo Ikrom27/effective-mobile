@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="travel_point_card_radius">16dp</dimen>
+
+    <dimen name="main_horizontal_margin">16dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="btn_small_height">33dp</dimen>
+    <dimen name="btn_small_width">33dp</dimen>
 </resources>

@@ -11,4 +11,10 @@
         <item name="android:textColorHint">@color/grey6</item>
         <item name="android:textSize">16sp</item>
     </style>
+    
+    <style name="buttonTextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:fontStyle">italic</item>
+    </style>
 </resources>

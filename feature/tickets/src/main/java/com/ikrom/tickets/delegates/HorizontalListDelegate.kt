@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.ui.adapters.BaseAdapter
 import com.example.ui.adapters.BaseDelegateAdapter
 import com.example.ui.adapters.AdapterItem
@@ -12,8 +14,8 @@ import com.ikrom.tickets.databinding.ItemHorizontalListBinding
 
 
 data class HorizontalListItem(
-    val title: String,
-    val adapter: BaseAdapter<*>
+    val adapter: Adapter<*>,
+    val itemDecoration: ItemDecoration? = null
 ): AdapterItem()
 
 
@@ -23,10 +25,14 @@ class HorizontalListDelegate:
     inner class HorizontalListViewHolder(val binding: ItemHorizontalListBinding):
         DelegateViewHolder<HorizontalListItem>(binding){
         override fun bind(item: HorizontalListItem) {
-            binding.title.text = item.title
             binding.recyclerView.layoutManager = LinearLayoutManager(binding.root.context)
                 .apply { orientation = LinearLayoutManager.HORIZONTAL }
             binding.recyclerView.adapter = item.adapter
+            item.itemDecoration?.let { decoration ->
+                if (binding.recyclerView.itemDecorationCount == 0){
+                    binding.recyclerView.addItemDecoration(decoration)
+                }
+            }
         }
     }
 

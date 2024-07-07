@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.adapters.CompositeAdapter
+import com.example.ui.adapters.item_decorations.MarginItemDecoration
+import com.example.utils.extensions.dpToPx
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
 import com.ikrom.tickets.delegates.ArtistsDelegate
 import com.ikrom.tickets.delegates.HorizontalListDelegate
@@ -19,6 +21,12 @@ import com.ikrom.tickets.delegates.TextAdapter
 import com.ikrom.tickets.delegates.TextItem
 import com.ikrom.tickets.delegates.TravelPointsDelegate
 import com.ikrom.tickets.delegates.TravelPointsItem
+import com.ikrom.tickets.delegates.buttons.DateBtnDelegate
+import com.ikrom.tickets.delegates.buttons.DateBtnItem
+import com.ikrom.tickets.delegates.buttons.PassengersNumBtnDelegate
+import com.ikrom.tickets.delegates.buttons.PassengersNumBtnItem
+import com.ikrom.tickets.delegates.buttons.ReturnFlightBtnDelegate
+import com.ikrom.tickets.delegates.buttons.ReturnFlightBtnItem
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -32,7 +40,7 @@ class TicketsFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentTicketsBinding
-    private val compositeAdapter = com.example.ui.adapters.CompositeAdapter.Builder()
+    private val compositeAdapter = CompositeAdapter.Builder()
         .add(TextAdapter())
         .add(TravelPointsDelegate())
         .add(HorizontalListDelegate())
@@ -71,11 +79,32 @@ class TicketsFragment : Fragment() {
             compositeAdapter.addToPosition(1, TravelPointsItem("", "", {}))
             ticketsViewModel.artistItem.observe(viewLifecycleOwner) { artists ->
                 compositeAdapter.addToPosition(2, item = HorizontalListItem(
-                    title = "С музакой",
                     adapter = ArtistsDelegate().apply { setItems(artists) }
                 ))
             }
+            compositeAdapter.addToPosition(3, getButtonsList())
         }
+    }
+
+    private fun getButtonsList(): HorizontalListItem {
+        val margin = resources.getDimension(com.example.ui.R.dimen.main_horizontal_margin)
+        return HorizontalListItem(
+            adapter = CompositeAdapter.Builder()
+                .add(DateBtnDelegate())
+                .add(PassengersNumBtnDelegate())
+                .add(ReturnFlightBtnDelegate())
+                .build().apply {
+                    addToEnd(ReturnFlightBtnItem("обратно"))
+                    addToEnd(DateBtnItem(24, "фев", "суб"))
+                    addToEnd(PassengersNumBtnItem(1, "эконом"))
+                },
+            itemDecoration = MarginItemDecoration(
+                startSpace = margin.toInt(),
+                endSpace = margin.toInt(),
+                betweenSpace = margin.toInt() / 2,
+                isHorizontal = true
+            )
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
