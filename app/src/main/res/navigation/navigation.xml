@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/subscriptionsFragment"
-        android:name="com.ikrom.effective_mobile.screens.SubscriptionsFragment"
+        android:name="com.ikrom.subscribtions.SubscriptionsFragment"
         android:label="@string/subscriptions_screen_label"
         tools:layout="@layout/fragment_subscriptions" />
 
