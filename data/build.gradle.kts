@@ -36,7 +36,6 @@ android {
 dependencies {
     implementation(libs.rxjava3.retrofit.adapter)
     implementation(libs.dagger)
-    implementation(project(":core-ui"))
     kapt(libs.dagger.compiler)
     implementation(libs.javax.inject)
     implementation(libs.converter.gson)

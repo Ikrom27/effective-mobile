@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.ikrom.base_adapter.utils.PriceUtils
+import com.example.utils.PriceUtils
 import com.ikrom.data.Repository
 import com.ikrom.tickets.delegates.ArtistItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

@@ -3,8 +3,8 @@ package com.ikrom.tickets.delegates
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ikrom.base_adapter.adapters.BaseDelegateAdapter
-import com.ikrom.base_adapter.adapters.AdapterItem
+import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.AdapterItem
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemTravelPointsBinding
 

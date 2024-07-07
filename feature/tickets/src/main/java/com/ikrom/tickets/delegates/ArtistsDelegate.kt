@@ -3,8 +3,8 @@ package com.ikrom.tickets.delegates
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import coil.load
-import com.ikrom.base_adapter.adapters.BaseAdapter
-import com.ikrom.base_adapter.adapters.AdapterItem
+import com.example.ui.adapters.BaseAdapter
+import com.example.ui.adapters.AdapterItem
 import com.ikrom.tickets.databinding.ItemArtistBinding
 import com.ikrom.tickets.R
 
@@ -14,12 +14,13 @@ data class ArtistItem(
     val town: String,
     val price: String,
     val imageUrl: String
-): AdapterItem()
+) : AdapterItem()
 
 
-class ArtistsDelegate: BaseAdapter<ArtistItem>() {
+class ArtistsDelegate : BaseAdapter<ArtistItem>() {
 
-    inner class ArtistViewHolder(val binding: ItemArtistBinding): BaseViewHolder<ArtistItem>(binding){
+    inner class ArtistViewHolder(val binding: ItemArtistBinding) :
+        BaseViewHolder<ArtistItem>(binding) {
         override fun bind(item: ArtistItem) {
             binding.artistName.text = item.artistName
             binding.artistImage.load(item.imageUrl)
@@ -28,7 +29,10 @@ class ArtistsDelegate: BaseAdapter<ArtistItem>() {
         }
     }
 
-    override fun createViewHolder(inflater: LayoutInflater, parent: ViewGroup): BaseViewHolder<ArtistItem> {
+    override fun createViewHolder(
+        inflater: LayoutInflater,
+        parent: ViewGroup
+    ): BaseViewHolder<ArtistItem> {
         val binding = ItemArtistBinding.inflate(inflater, parent, false)
         return ArtistViewHolder(binding)
     }

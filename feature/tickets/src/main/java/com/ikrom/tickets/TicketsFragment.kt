@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ikrom.base_adapter.adapters.CompositeAdapter
+import com.example.ui.adapters.CompositeAdapter
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
 import com.ikrom.tickets.delegates.ArtistsDelegate
 import com.ikrom.tickets.delegates.HorizontalListDelegate
@@ -32,7 +32,7 @@ class TicketsFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentTicketsBinding
-    private val compositeAdapter = CompositeAdapter.Builder()
+    private val compositeAdapter = com.example.ui.adapters.CompositeAdapter.Builder()
         .add(TextAdapter())
         .add(TravelPointsDelegate())
         .add(HorizontalListDelegate())

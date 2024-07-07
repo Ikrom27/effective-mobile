@@ -21,10 +21,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "effective mobile"
 include(":app")
-include(":core-ui")
 include(":data")
 include(":feature:tickets")
 include(":feature:hotels")
 include(":feature:shorter")
 include(":feature:subscriptions")
 include(":feature:profile")
+include(":core:ui")
+include(":core:utils")
