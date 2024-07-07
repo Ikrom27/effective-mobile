@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.ikrom.effective_mobile.screens.ProfileFragment"
+        android:name="com.ikrom.profile.ProfileFragment"
         android:label="@string/profile_screen_label"
         tools:layout="@layout/fragment_profile" />
 </navigation>
