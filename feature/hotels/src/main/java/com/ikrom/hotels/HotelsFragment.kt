@@ -1,11 +1,10 @@
-package com.ikrom.effective_mobile.screens
+package com.ikrom.hotels
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.ikrom.effective_mobile.R
 
 
 class HotelsFragment : Fragment() {
