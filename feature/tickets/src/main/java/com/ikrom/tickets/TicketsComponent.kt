@@ -1,4 +1,4 @@
-package com.ikrom.feature_tickets
+package com.ikrom.tickets
 
 import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel

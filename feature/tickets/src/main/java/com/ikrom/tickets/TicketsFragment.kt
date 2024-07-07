@@ -1,4 +1,4 @@
-package com.ikrom.feature_tickets
+package com.ikrom.tickets
 
 import android.content.Context
 import android.os.Bundle
@@ -11,14 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikrom.base_adapter.adapters.CompositeAdapter
-import com.ikrom.feature_tickets.delegates.TextAdapter
-import com.ikrom.feature_tickets.delegates.TextItem
-import com.ikrom.feature_tickets.delegates.TravelPointsDelegate
-import com.ikrom.feature_tickets.delegates.TravelPointsItem
-import com.ikrom.feature_tickets.databinding.FragmentTicketsBinding
-import com.ikrom.feature_tickets.delegates.ArtistsDelegate
-import com.ikrom.feature_tickets.delegates.HorizontalListDelegate
-import com.ikrom.feature_tickets.delegates.HorizontalListItem
+import com.ikrom.tickets.databinding.FragmentTicketsBinding
+import com.ikrom.tickets.delegates.ArtistsDelegate
+import com.ikrom.tickets.delegates.HorizontalListDelegate
+import com.ikrom.tickets.delegates.HorizontalListItem
+import com.ikrom.tickets.delegates.TextAdapter
+import com.ikrom.tickets.delegates.TextItem
+import com.ikrom.tickets.delegates.TravelPointsDelegate
+import com.ikrom.tickets.delegates.TravelPointsItem
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -26,9 +26,11 @@ class TicketsFragment : Fragment() {
 
     @Inject
     internal lateinit var ticketsViewModelFactory: Lazy<TicketsViewModel.Factory>
+
     private val ticketsViewModel: TicketsViewModel by viewModels {
         ticketsViewModelFactory.get()
     }
+
     private lateinit var binding: FragmentTicketsBinding
     private val compositeAdapter = CompositeAdapter.Builder()
         .add(TextAdapter())

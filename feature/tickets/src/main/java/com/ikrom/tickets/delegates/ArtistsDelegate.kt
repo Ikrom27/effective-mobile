@@ -1,12 +1,12 @@
-package com.ikrom.feature_tickets.delegates
+package com.ikrom.tickets.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import coil.load
 import com.ikrom.base_adapter.adapters.BaseAdapter
 import com.ikrom.base_adapter.adapters.AdapterItem
-import com.ikrom.feature_tickets.R
-import com.ikrom.feature_tickets.databinding.ItemArtistBinding
+import com.ikrom.tickets.databinding.ItemArtistBinding
+import com.ikrom.tickets.R
 
 
 data class ArtistItem(

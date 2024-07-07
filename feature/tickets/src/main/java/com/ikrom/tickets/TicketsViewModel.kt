@@ -1,4 +1,4 @@
-package com.ikrom.feature_tickets
+package com.ikrom.tickets
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ikrom.base_adapter.utils.PriceUtils
 import com.ikrom.data.Repository
-import com.ikrom.feature_tickets.delegates.ArtistItem
+import com.ikrom.tickets.delegates.ArtistItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject

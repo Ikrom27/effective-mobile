@@ -1,12 +1,12 @@
-package com.ikrom.feature_tickets.delegates
+package com.ikrom.tickets.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ikrom.base_adapter.adapters.BaseDelegateAdapter
 import com.ikrom.base_adapter.adapters.AdapterItem
-import com.ikrom.feature_tickets.R
-import com.ikrom.feature_tickets.databinding.ItemTextBinding
+import com.ikrom.tickets.R
+import com.ikrom.tickets.databinding.ItemTextBinding
 
 data class TextItem(
     val text: String

@@ -1,4 +1,4 @@
-package com.ikrom.feature_tickets.delegates
+package com.ikrom.tickets.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ikrom.base_adapter.adapters.BaseAdapter
 import com.ikrom.base_adapter.adapters.BaseDelegateAdapter
 import com.ikrom.base_adapter.adapters.AdapterItem
-import com.ikrom.feature_tickets.R
-import com.ikrom.feature_tickets.databinding.ItemHorizontalListBinding
+import com.ikrom.tickets.R
+import com.ikrom.tickets.databinding.ItemHorizontalListBinding
 
 
 data class HorizontalListItem(

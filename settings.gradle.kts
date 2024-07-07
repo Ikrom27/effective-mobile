@@ -23,4 +23,4 @@ rootProject.name = "effective mobile"
 include(":app")
 include(":core-ui")
 include(":data")
-include(":feature-tickets")
+include(":feature:tickets")
