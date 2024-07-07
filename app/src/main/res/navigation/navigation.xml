@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/shorterFragment"
-        android:name="com.ikrom.effective_mobile.screens.ShorterFragment"
+        android:name="com.ikrom.shorter.ShorterFragment"
         android:label="@string/shorter_screen_label"
         tools:layout="@layout/fragment_shorter" />
 
