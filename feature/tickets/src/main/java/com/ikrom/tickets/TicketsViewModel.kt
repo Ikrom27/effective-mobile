@@ -1,7 +1,6 @@
 package com.ikrom.tickets
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +9,7 @@ import com.example.utils.PriceUtils
 import com.ikrom.data.Repository
 import com.ikrom.tickets.delegates.ArtistItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Provider
@@ -21,11 +21,13 @@ class TicketsViewModel @Inject constructor(
     private val _artistList = MutableLiveData<List<ArtistItem>>()
     val artistItem: LiveData<List<ArtistItem>> = _artistList
 
+    private lateinit var disposable: Disposable
+
     var originText: String = getLastOrigin()
 
     @SuppressLint("CheckResult")
     fun updateArtistList() {
-        repository.getArtistsList()
+        disposable = repository.getArtistsList()
             .subscribeOn(Schedulers.io())
             .map {
                 it.offers.map { artistResponse ->
@@ -53,6 +55,13 @@ class TicketsViewModel @Inject constructor(
 
     fun saveOrigin(){
         repository.saveOrigin(originText)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        if (this::disposable.isInitialized){
+            disposable.dispose()
+        }
     }
 
     class Factory @Inject constructor(
