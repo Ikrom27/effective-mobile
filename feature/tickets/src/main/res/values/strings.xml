@@ -5,4 +5,5 @@
     <string name="anywhere_label">Куда угодно</string>
     <string name="weekends_label">Выходные</string>
     <string name="hot_tickets_label">горячие билеты</string>
+    <string name="back">назад</string>
 </resources>

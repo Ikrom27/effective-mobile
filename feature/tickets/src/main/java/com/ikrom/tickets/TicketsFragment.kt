@@ -100,8 +100,8 @@ class TicketsFragment : Fragment() {
             defaultText = ticketsViewModel.originText,
             onOriginChange = { ticketsViewModel.onOriginChange(it) },
             onDestinationClick = {
-                val fragment = SearchFragment()
-                fragment.show(parentFragmentManager, SearchFragment.TAG)
+                val fragment = ModalFragment()
+                fragment.show(parentFragmentManager, ModalFragment.TAG)
             }
         )
     }

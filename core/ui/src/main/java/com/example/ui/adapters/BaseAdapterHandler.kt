@@ -50,6 +50,10 @@ abstract class BaseAdapterHandler<T: AdapterItem, VH: RecyclerView.ViewHolder>: 
         notifyItemChanged(position)
     }
 
+    fun clear(){
+        mItems.clear()
+    }
+
     fun addToStart(item: T){
         addToPosition(0, item)
     }

@@ -1,46 +1,28 @@
 package com.ikrom.tickets
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ui.R
 import com.example.ui.adapters.CompositeAdapter
-import com.example.ui.adapters.extensions.layoutConfigure
-import com.example.ui.adapters.extensions.setBackgroundTint
-import com.example.ui.adapters.extensions.setFullHeight
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ikrom.tickets.databinding.FragmentSearchBinding
 import com.ikrom.tickets.delegates.SearchButtonsDelegate
 import com.ikrom.tickets.delegates.SearchButtonsItem
 import com.ikrom.tickets.delegates.SearchTravelPointItem
 import com.ikrom.tickets.delegates.SearchTravelPointsDelegate
 
-class SearchFragment : BottomSheetDialogFragment() {
+class SearchFragment : Fragment() {
 
-    private val compositeAdapter = CompositeAdapter.Builder()
+    private val compositeAdapter: CompositeAdapter = CompositeAdapter.Builder()
         .add(SearchTravelPointsDelegate())
         .add(SearchButtonsDelegate())
         .build()
     private val viewModel: SearchViewModel by viewModels()
     lateinit var binding: FragmentSearchBinding
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        layoutConfigure(dialog) {bottomSheet ->
-            bottomSheet?.let {
-                bottomSheet.setFullHeight()
-                bottomSheet.setBackgroundTint(requireContext(), R.color.bottom_sheet_color)
-
-            }
-        }
-        return dialog
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,12 +35,18 @@ class SearchFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupAdapterData(){
-        compositeAdapter.addToPosition(0,
-            SearchTravelPointItem("", "", {})
-        )
-        compositeAdapter.addToPosition(2, SearchButtonsItem({}, {
-            viewModel.setDestination("Куда угодно")
-        }, {}, {}))
+        compositeAdapter.setItems(listOf(
+            SearchTravelPointItem("", "", {}),
+            SearchButtonsItem({
+                findNavController().navigate(R.id.to_empty_fragment)
+            }, {
+                viewModel.setDestination("Куда угодно")
+            }, {
+                findNavController().navigate(R.id.to_empty_fragment)
+            }, {
+                findNavController().navigate(R.id.to_empty_fragment)
+            })
+        ))
         updateAdapterData()
     }
 
@@ -82,6 +70,11 @@ class SearchFragment : BottomSheetDialogFragment() {
     private fun setupBinding(): View {
         binding = FragmentSearchBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onStop() {
+        super.onStop()
+        compositeAdapter.clear()
     }
 
     companion object {
