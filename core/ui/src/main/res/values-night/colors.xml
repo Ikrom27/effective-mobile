@@ -2,4 +2,5 @@
 <resources>
     <color name="separator">@color/grey1</color>
     <color name="navbar_background">@color/black</color>
+    <color name="search_travel_points_card">#2e2f34</color>
 </resources>

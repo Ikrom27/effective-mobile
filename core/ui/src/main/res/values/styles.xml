@@ -31,4 +31,10 @@
         <item name="android:background">@drawable/bg_rounded_rectangle</item>
         <item name="android:backgroundTint">@color/grey4</item>
     </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Material3.BottomSheet">
+        <item name="paddingBottomSystemWindowInsets">false</item>
+        <item name="android:maxWidth">@empty</item>
+        <item name="android:backgroundTint">@color/red</item>
+    </style>
 </resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rectangle_rounded_16"
+    android:backgroundTint="@color/search_travel_points_card"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/icOrigin"
+        android:layout_width="@dimen/icon_medium"
+        android:layout_height="@dimen/icon_medium"
+        android:src="@drawable/ic_plane_2"
+        android:tint="#58595b"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/originText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/icOrigin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icOrigin"
+        app:layout_constraintTop_toTopOf="@+id/icOrigin" />
+
+    <View
+        android:id="@+id/separator"
+        style="@style/separator"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icOrigin" />
+
+    <ImageView
+        android:id="@+id/icDestination"
+        android:layout_width="@dimen/icon_medium"
+        android:layout_height="@dimen/icon_medium"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_search"
+        android:tint="@color/white2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator" />
+
+    <ImageView
+        android:id="@+id/icClear"
+        android:layout_width="@dimen/icon_medium"
+        android:layout_height="@dimen/icon_medium"
+        android:src="@drawable/ic_clear"
+        android:tint="@color/white3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/icDestination" />
+
+    <TextView
+        android:id="@+id/destination_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/icClear"
+        app:layout_constraintStart_toEndOf="@+id/icDestination"
+        app:layout_constraintTop_toTopOf="@+id/icDestination" />
+</androidx.constraintlayout.widget.ConstraintLayout>

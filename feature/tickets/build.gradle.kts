@@ -9,8 +9,8 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
 
+        minSdk = 28
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -38,6 +38,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
     implementation(libs.coil)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.rxandroid)
