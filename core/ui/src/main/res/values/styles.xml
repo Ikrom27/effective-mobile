@@ -36,5 +36,6 @@
         <item name="paddingBottomSystemWindowInsets">false</item>
         <item name="android:maxWidth">@empty</item>
         <item name="android:backgroundTint">@color/red</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>
