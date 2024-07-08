@@ -3,10 +3,9 @@ package com.ikrom.effective_mobile.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import com.ikrom.data.Repository
 import com.ikrom.data.di.ArtsitService
-import com.ikrom.tickets.TicketsDeps
+import com.ikrom.tickets.di.TicketsDeps
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module

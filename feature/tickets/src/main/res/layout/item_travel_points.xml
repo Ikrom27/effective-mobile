@@ -58,6 +58,7 @@
             <EditText
                 android:id="@+id/destinationText"
                 style="@style/travelInput"
+                android:focusable="false"
                 android:hint="@string/travel_destination_hint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/separator"

@@ -1,8 +1,9 @@
-package com.ikrom.tickets
+package com.ikrom.tickets.di
 
 import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import com.ikrom.data.Repository
+import com.ikrom.tickets.TicketsFragment
 import dagger.Component
 import kotlin.properties.Delegates.notNull
 

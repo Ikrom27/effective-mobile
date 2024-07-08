@@ -27,6 +27,7 @@ import com.ikrom.tickets.delegates.buttons.PassengersNumBtnDelegate
 import com.ikrom.tickets.delegates.buttons.PassengersNumBtnItem
 import com.ikrom.tickets.delegates.buttons.ReturnFlightBtnDelegate
 import com.ikrom.tickets.delegates.buttons.ReturnFlightBtnItem
+import com.ikrom.tickets.di.TicketsComponentViewModel
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -98,7 +99,10 @@ class TicketsFragment : Fragment() {
         return TravelPointsItem(
             defaultText = ticketsViewModel.originText,
             onOriginChange = { ticketsViewModel.onOriginChange(it) },
-            onDestinationClick = {}
+            onDestinationClick = {
+                val fragment = SearchFragment()
+                fragment.show(parentFragmentManager, SearchFragment.TAG)
+            }
         )
     }
 
