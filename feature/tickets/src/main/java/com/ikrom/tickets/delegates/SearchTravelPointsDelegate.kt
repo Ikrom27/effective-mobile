@@ -24,7 +24,7 @@ class SearchTravelPointsDelegate: BaseDelegateAdapter
 
             override fun bind(item: SearchTravelPointItem) {
                 binding.originText.text = item.origin
-                binding.destinationText.text = item.destination
+                binding.destinationText.setText(item.destination)
                 binding.destinationText.doOnTextChanged {text, _, _, _ ->
                     item.onDestinationChange(text.toString())
                 }

@@ -4,4 +4,5 @@
     <color name="navbar_background">@color/black</color>
     <color name="search_travel_points_card">#2e2f34</color>
     <color name="bottom_sheet_color">#ff242529</color>
+    <color name="handle_color">@color/grey5</color>
 </resources>
