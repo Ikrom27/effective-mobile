@@ -1,17 +1,18 @@
 package com.ikrom.tickets
 
 import android.app.Dialog
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.R
 import com.example.ui.adapters.CompositeAdapter
 import com.example.ui.adapters.extensions.layoutConfigure
 import com.example.ui.adapters.extensions.setBackgroundTint
 import com.example.ui.adapters.extensions.setFullHeight
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ikrom.tickets.databinding.FragmentSearchBinding
@@ -26,14 +27,17 @@ class SearchFragment : BottomSheetDialogFragment() {
         .add(SearchTravelPointsDelegate())
         .add(SearchButtonsDelegate())
         .build()
-
+    private val viewModel: SearchViewModel by viewModels()
     lateinit var binding: FragmentSearchBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         layoutConfigure(dialog) {bottomSheet ->
-            bottomSheet?.setFullHeight()
-            bottomSheet?.setBackgroundTint(requireContext(), R.color.bottom_sheet_color)
+            bottomSheet?.let {
+                bottomSheet.setFullHeight()
+                bottomSheet.setBackgroundTint(requireContext(), R.color.bottom_sheet_color)
+
+            }
         }
         return dialog
     }
@@ -49,14 +53,25 @@ class SearchFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupAdapterData(){
-        compositeAdapter.add(
-            SearchTravelPointItem(
-                "Москва",
-                "",
-                {}
-            )
+        compositeAdapter.addToPosition(0,
+            SearchTravelPointItem("", "", {})
         )
-        compositeAdapter.add(SearchButtonsItem({}, {}, {}, {}))
+        compositeAdapter.addToPosition(2, SearchButtonsItem({}, {
+            viewModel.setDestination("Куда угодно")
+        }, {}, {}))
+        updateAdapterData()
+    }
+
+    private fun updateAdapterData(){
+        viewModel.destinationText.observe(viewLifecycleOwner) {text ->
+            compositeAdapter.updateItem(0,
+                SearchTravelPointItem(
+                    "Москва",
+                    text,
+                    {}
+                )
+            )
+        }
     }
 
     private fun setupRecyclerView(){

@@ -46,8 +46,7 @@ abstract class BaseAdapterHandler<T: AdapterItem, VH: RecyclerView.ViewHolder>: 
             notifyItemChanged(itemCount)
             return
         }
-        mItems.removeAt(position)
-        mItems.add(position, item)
+        mItems[position] = item
         notifyItemChanged(position)
     }
 
