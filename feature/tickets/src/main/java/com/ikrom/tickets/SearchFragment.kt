@@ -36,7 +36,7 @@ class SearchFragment : Fragment() {
 
     private fun setupAdapterData(){
         compositeAdapter.setItems(listOf(
-            SearchTravelPointItem("", "", {}),
+            SearchTravelPointItem("", "", {}, {}),
             SearchButtonsItem({
                 findNavController().navigate(R.id.to_empty_fragment)
             }, {
@@ -56,7 +56,10 @@ class SearchFragment : Fragment() {
                 SearchTravelPointItem(
                     "Москва",
                     text,
-                    {}
+                    {},
+                    {
+                        viewModel.setDestination("")
+                    }
                 )
             )
         }

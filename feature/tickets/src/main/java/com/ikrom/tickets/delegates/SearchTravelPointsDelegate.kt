@@ -1,5 +1,6 @@
 package com.ikrom.tickets.delegates
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
@@ -13,6 +14,7 @@ data class SearchTravelPointItem(
     val origin: String,
     val destination: String,
     val onDestinationChange: (String) -> Unit,
+    val onClear: () -> Unit
 ): AdapterItem()
 
 class SearchTravelPointsDelegate: BaseDelegateAdapter
@@ -25,8 +27,12 @@ class SearchTravelPointsDelegate: BaseDelegateAdapter
             override fun bind(item: SearchTravelPointItem) {
                 binding.originText.text = item.origin
                 binding.destinationText.setText(item.destination)
+                binding.icClear.setOnClickListener {
+                    binding.destinationText.setText("")
+                }
                 binding.destinationText.doOnTextChanged {text, _, _, _ ->
                     item.onDestinationChange(text.toString())
+                    Log.d("adapter", text.toString())
                 }
         }
     }
