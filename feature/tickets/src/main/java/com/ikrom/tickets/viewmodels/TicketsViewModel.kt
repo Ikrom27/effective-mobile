@@ -1,4 +1,4 @@
-package com.ikrom.tickets
+package com.ikrom.tickets.viewmodels
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData

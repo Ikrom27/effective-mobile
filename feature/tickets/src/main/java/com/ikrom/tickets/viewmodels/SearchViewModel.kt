@@ -1,4 +1,4 @@
-package com.ikrom.tickets
+package com.ikrom.tickets.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

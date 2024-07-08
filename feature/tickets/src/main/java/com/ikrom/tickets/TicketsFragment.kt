@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
@@ -13,12 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.adapters.CompositeAdapter
 import com.example.ui.adapters.item_decorations.MarginItemDecoration
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
+import com.ikrom.tickets.delegates.ArtistsDelegate
 import com.ikrom.tickets.delegates.Flight
 import com.ikrom.tickets.delegates.FlightsDelegate
 import com.ikrom.tickets.delegates.FlightsItem
 import com.ikrom.tickets.delegates.HorizontalListDelegate
 import com.ikrom.tickets.delegates.HorizontalListItem
 import com.ikrom.tickets.delegates.TextAdapter
+import com.ikrom.tickets.delegates.TextItem
 import com.ikrom.tickets.delegates.TravelPointsDelegate
 import com.ikrom.tickets.delegates.TravelPointsItem
 import com.ikrom.tickets.delegates.buttons.DateBtnDelegate
@@ -28,6 +31,8 @@ import com.ikrom.tickets.delegates.buttons.PassengersNumBtnItem
 import com.ikrom.tickets.delegates.buttons.ReturnFlightBtnDelegate
 import com.ikrom.tickets.delegates.buttons.ReturnFlightBtnItem
 import com.ikrom.tickets.di.TicketsComponentViewModel
+import com.ikrom.tickets.viewmodels.SharedViewModel
+import com.ikrom.tickets.viewmodels.TicketsViewModel
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -39,6 +44,8 @@ class TicketsFragment : Fragment() {
     private val ticketsViewModel: TicketsViewModel by viewModels {
         ticketsViewModelFactory.get()
     }
+
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private lateinit var binding: FragmentTicketsBinding
     private val compositeAdapter = CompositeAdapter.Builder()
@@ -76,35 +83,45 @@ class TicketsFragment : Fragment() {
     }
 
     fun setupAdapterData(){
-        if (compositeAdapter.itemCount == 0){
-//            compositeAdapter.addToPosition(0, TextItem("Поиск дешевых авиабилетов"))
-            compositeAdapter.add(getTravelPointsItem())
-//            ticketsViewModel.artistItem.observe(viewLifecycleOwner) { artists ->
-//                compositeAdapter.addToPosition(2, item = HorizontalListItem(
-//                    adapter = ArtistsDelegate().apply { setItems(artists) }
-//                ))
-//            }
-            compositeAdapter.add(getButtonsList())
-            compositeAdapter.add(FlightsItem(
+        sharedViewModel.destinationLiveData.observe(viewLifecycleOwner){
+            if(it.isBlank()){
+                setFirstEnterItems()
+            } else {
+                setTicketsItems()
+            }
+        }
+    }
+
+    private fun setTicketsItems() {
+        compositeAdapter.setItems(listOf(
+            getButtonsList(),
+            FlightsItem(
                 flights = listOf(
                     Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231),
                     Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231),
                     Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231)
                 )
-            ))
-        }
+            )
+        ))
     }
 
-    private fun getTravelPointsItem(): TravelPointsItem {
-        return TravelPointsItem(
-            defaultText = ticketsViewModel.originText,
-            onOriginChange = { ticketsViewModel.onOriginChange(it) },
-            onDestinationClick = {
-                val fragment = ModalFragment()
-                fragment.show(parentFragmentManager, ModalFragment.TAG)
-            }
-        )
+    private fun setFirstEnterItems(){
+        compositeAdapter.setItems(listOf(
+            TextItem("Поиск дешевых авиабилетов"),
+            TravelPointsItem(
+                defaultText = ticketsViewModel.originText,
+                onOriginChange = { ticketsViewModel.onOriginChange(it) },
+                onDestinationClick = { showDialog() }
+            ),
+            HorizontalListItem(adapter = ArtistsDelegate().apply { setItems(emptyList()) })
+        ))
     }
+
+    private fun showDialog(){
+        val fragment = ModalFragment()
+        fragment.show(parentFragmentManager, ModalFragment.TAG)
+    }
+
 
     private fun getButtonsList(): HorizontalListItem {
         val margin = resources.getDimension(com.example.ui.R.dimen.main_horizontal_margin)

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,8 @@ import com.ikrom.tickets.delegates.SearchButtonsDelegate
 import com.ikrom.tickets.delegates.SearchButtonsItem
 import com.ikrom.tickets.delegates.SearchTravelPointItem
 import com.ikrom.tickets.delegates.SearchTravelPointsDelegate
+import com.ikrom.tickets.viewmodels.SearchViewModel
+import com.ikrom.tickets.viewmodels.SharedViewModel
 
 class SearchFragment : Fragment() {
 
@@ -23,6 +26,7 @@ class SearchFragment : Fragment() {
         .build()
     private val viewModel: SearchViewModel by viewModels()
     lateinit var binding: FragmentSearchBinding
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,8 +80,9 @@ class SearchFragment : Fragment() {
     }
 
     override fun onStop() {
-        super.onStop()
+        sharedViewModel.destinationLiveData.value = viewModel.destinationText.value
         compositeAdapter.clear()
+        super.onStop()
     }
 
     companion object {
