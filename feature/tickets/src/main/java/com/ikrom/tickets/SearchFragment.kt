@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.R
 import com.example.ui.adapters.CompositeAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ikrom.tickets.databinding.FragmentSearchBinding
+import com.ikrom.tickets.delegates.SearchButtonsDelegate
+import com.ikrom.tickets.delegates.SearchButtonsItem
 import com.ikrom.tickets.delegates.SearchTravelPointItem
 import com.ikrom.tickets.delegates.SearchTravelPointsDelegate
 
@@ -17,6 +18,7 @@ class SearchFragment : BottomSheetDialogFragment() {
 
     private val compositeAdapter = CompositeAdapter.Builder()
         .add(SearchTravelPointsDelegate())
+        .add(SearchButtonsDelegate())
         .build()
 
     lateinit var binding: FragmentSearchBinding
@@ -43,6 +45,7 @@ class SearchFragment : BottomSheetDialogFragment() {
                 {}
             )
         )
+        compositeAdapter.add(SearchButtonsItem({}, {}, {}, {}))
     }
 
     private fun setupRecyclerView(){

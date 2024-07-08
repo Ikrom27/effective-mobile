@@ -5,4 +5,9 @@
     <string name="shorter_screen_label">Короче</string>
     <string name="subscriptions_screen_label">Подписки</string>
     <string name="profile_screen_label">Профиль</string>
+
+    <string name="travel_origin_hint">Откуда - Москва</string>
+    <string name="travel_destination_hint">Куда - Турция</string>
+
+    <string name="difficult_route_label">Сложный маршрут</string>
 </resources>

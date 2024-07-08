@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="24dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/btnDifficultRoute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/ic_difficult_route"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"/>
+        <TextView
+            android:id="@+id/difficultRouteText"
+            android:layout_width="80dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="@string/difficult_route_label"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:id="@+id/btnAnywhere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/ic_anywhere"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"/>
+        <TextView
+            android:id="@+id/anywhereText"
+            android:layout_width="80dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="@string/anywhere_label"  />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:id="@+id/btnWeekends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/ic_weekends"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"/>
+        <TextView
+            android:id="@+id/weekendsText"
+            android:layout_width="80dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="@string/weekends_label"  />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:id="@+id/btnHotTickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/ic_hot_tickets"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"/>
+        <TextView
+            android:id="@+id/hotTicketsText"
+            android:layout_width="80dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="@string/hot_tickets_label"  />
+    </LinearLayout>
+
+</LinearLayout>

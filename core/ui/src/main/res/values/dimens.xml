@@ -11,4 +11,5 @@
     <!-- Image -->
     <dimen name="icon_small">16dp</dimen>
     <dimen name="icon_medium">24dp</dimen>
+    <dimen name="icon_large">48dp</dimen>
 </resources>
