@@ -12,10 +12,10 @@ class CyrilFilter: InputFilter {
         dstart: Int,
         dend: Int
     ): CharSequence? {
-        if (source.toString().matches(Regex("[а-яА-ЯёЁ]"))) {
-            return source
+        if (source.toString().matches(Regex("[a-zA-Z]"))) {
+            return ""
         }
-        return ""
+        return source
     }
 
 }
