@@ -1,4 +1,4 @@
-package com.ikrom.tickets.delegates
+package com.ikrom.tickets.delegates.travelpoints_delegates
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,21 +10,21 @@ import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemTravelPointsDestinationBinding
 
-data class SearchTravelPointItem(
+data class TravelPointDestinationItem(
     val origin: String,
     val destination: String,
     val onDestinationChange: (String) -> Unit,
     val onClear: () -> Unit
 ): AdapterItem()
 
-class SearchTravelPointsDelegate: DelegateAdapter
-<SearchTravelPointItem, SearchTravelPointsDelegate.SearchTravelPointsVH>(
-    SearchTravelPointItem::class.java) {
+class TravelPointsDestinationDelegate: DelegateAdapter
+<TravelPointDestinationItem, TravelPointsDestinationDelegate.ViewHolder>(
+    TravelPointDestinationItem::class.java) {
 
-    inner class SearchTravelPointsVH(val binding: ItemTravelPointsDestinationBinding):
-        DelegateVH<SearchTravelPointItem>(binding){
+    inner class ViewHolder(val binding: ItemTravelPointsDestinationBinding):
+        DelegateVH<TravelPointDestinationItem>(binding){
 
-            override fun bind(item: SearchTravelPointItem) {
+            override fun bind(item: TravelPointDestinationItem) {
                 binding.originText.text = item.origin
                 binding.destinationText.setText(item.destination)
                 binding.icClear.setOnClickListener {
@@ -42,7 +42,7 @@ class SearchTravelPointsDelegate: DelegateAdapter
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemTravelPointsDestinationBinding.inflate(inflater, parent, false)
-        return SearchTravelPointsVH(binding)
+        return ViewHolder(binding)
     }
 
     override fun getLayoutId(): Int {

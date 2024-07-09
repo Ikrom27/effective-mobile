@@ -1,4 +1,4 @@
-package com.ikrom.tickets.delegates
+package com.ikrom.tickets.delegates.travelpoints_delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,16 +10,16 @@ import com.example.utils.CyrilFilter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemTravelPointsOriginBinding
 
-data class TravelPointsItem(
+data class TravelPointsOriginItem(
     val defaultText: String,
     val onOriginChange: (String) -> Unit,
     val onDestinationClick: () -> Unit,
 ): AdapterItem()
 
-class TravelPointsDelegate: DelegateAdapter<TravelPointsItem, TravelPointsDelegate.TravelPointsVH>(
-    TravelPointsItem::class.java) {
-    inner class TravelPointsVH(val binding: ItemTravelPointsOriginBinding): DelegateVH<TravelPointsItem>(binding){
-        override fun bind(item: TravelPointsItem) {
+class TravelPointsOriginDelegate: DelegateAdapter<TravelPointsOriginItem, TravelPointsOriginDelegate.ViewHolder>(
+    TravelPointsOriginItem::class.java) {
+    inner class ViewHolder(val binding: ItemTravelPointsOriginBinding): DelegateVH<TravelPointsOriginItem>(binding){
+        override fun bind(item: TravelPointsOriginItem) {
             binding.originText.setText(item.defaultText)
 
             binding.originText.filters = arrayOf(CyrilFilter())
@@ -38,7 +38,7 @@ class TravelPointsDelegate: DelegateAdapter<TravelPointsItem, TravelPointsDelega
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemTravelPointsOriginBinding.inflate(inflater, parent, false)
-        return TravelPointsVH(binding)
+        return ViewHolder(binding)
     }
 
     override fun getLayoutId(): Int {

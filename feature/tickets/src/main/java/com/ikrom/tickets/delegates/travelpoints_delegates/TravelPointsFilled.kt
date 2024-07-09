@@ -1,4 +1,4 @@
-package com.ikrom.tickets.delegates
+package com.ikrom.tickets.delegates.travelpoints_delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,20 +8,20 @@ import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemTravelPointsFilledBinding
 
-data class FilledTravelPointItem(
+data class TravelPointFilledItem(
     val origin: String,
     val destination: String,
     override val onClick: () -> Unit
 ): AdapterItem()
 
-class FilledTravelPointsDelegate: DelegateAdapter
-<FilledTravelPointItem, FilledTravelPointsDelegate.FilledTravelPointsVH>(
-    FilledTravelPointItem::class.java) {
+class TravelPointsFilledDelegate: DelegateAdapter
+<TravelPointFilledItem, TravelPointsFilledDelegate.ViewHolder>(
+    TravelPointFilledItem::class.java) {
 
-    inner class FilledTravelPointsVH(val binding: ItemTravelPointsFilledBinding):
-        DelegateVH<FilledTravelPointItem>(binding){
+    inner class ViewHolder(val binding: ItemTravelPointsFilledBinding):
+        DelegateVH<TravelPointFilledItem>(binding){
 
-            override fun bind(item: FilledTravelPointItem) {
+            override fun bind(item: TravelPointFilledItem) {
                 binding.originText.text = item.origin
                 binding.destinationText.text = item.destination
         }
@@ -32,7 +32,7 @@ class FilledTravelPointsDelegate: DelegateAdapter
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemTravelPointsFilledBinding.inflate(inflater, parent, false)
-        return FilledTravelPointsVH(binding)
+        return ViewHolder(binding)
     }
 
     override fun getLayoutId(): Int {
