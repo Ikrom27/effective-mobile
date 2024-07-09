@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="placeLabelAppearance">
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontWeight">600</item>
+        <item name="lineHeight">19.5dp</item>
+    </style>
+
+    <style name="placeDescriptionAppearance">
+        <item name="android:textColor">@color/text5</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontWeight">400</item>
+        <item name="lineHeight">16.8dp</item>
+    </style>
+</resources>

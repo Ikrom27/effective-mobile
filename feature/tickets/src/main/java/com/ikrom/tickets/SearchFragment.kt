@@ -11,6 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.adapters.CompositeAdapter
 import com.ikrom.tickets.databinding.FragmentSearchBinding
+import com.ikrom.tickets.delegates.Place
+import com.ikrom.tickets.delegates.PlacesCardDelegate
+import com.ikrom.tickets.delegates.PlacesItem
 import com.ikrom.tickets.delegates.SearchButtonsDelegate
 import com.ikrom.tickets.delegates.SearchButtonsItem
 import com.ikrom.tickets.delegates.SearchTravelPointItem
@@ -23,6 +26,7 @@ class SearchFragment : Fragment() {
     private val compositeAdapter: CompositeAdapter = CompositeAdapter.Builder()
         .add(SearchTravelPointsDelegate())
         .add(SearchButtonsDelegate())
+        .add(PlacesCardDelegate())
         .build()
     private val viewModel: SearchViewModel by viewModels()
     lateinit var binding: FragmentSearchBinding
@@ -49,7 +53,24 @@ class SearchFragment : Fragment() {
                 findNavController().navigate(R.id.to_empty_fragment)
             }, {
                 findNavController().navigate(R.id.to_empty_fragment)
-            })
+            }),
+            PlacesItem(listOf(
+                Place(
+                    "Стамбул",
+                    "Популярное направление",
+                    "file:///android_asset/pl1.png"
+                ),
+                Place(
+                    "Сочи",
+                    "Популярное направление",
+                    "file:///android_asset/pl2.png"
+                ),
+                Place(
+                    "Пхукет",
+                    "Популярное направление",
+                    "file:///android_asset/pl3.png"
+                )
+            ))
         ))
         updateAdapterData()
     }

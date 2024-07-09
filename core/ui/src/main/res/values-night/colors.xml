@@ -5,4 +5,10 @@
     <color name="search_travel_points_card">#2e2f34</color>
     <color name="bottom_sheet_color">#ff242529</color>
     <color name="handle_color">@color/grey5</color>
+
+    <color name="text1">@color/white</color>
+    <color name="text2">@color/white2</color>
+    <color name="text3">@color/white3</color>
+    <color name="text4">@color/white4</color>
+    <color name="text5">@color/grey5</color>
 </resources>
