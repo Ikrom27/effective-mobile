@@ -58,17 +58,20 @@ class SearchFragment : Fragment() {
                 Place(
                     "Стамбул",
                     "Популярное направление",
-                    "file:///android_asset/pl1.png"
+                    "file:///android_asset/pl1.png",
+                    {viewModel.setDestination(it)}
                 ),
                 Place(
                     "Сочи",
                     "Популярное направление",
-                    "file:///android_asset/pl2.png"
+                    "file:///android_asset/pl2.png",
+                    {viewModel.setDestination(it)}
                 ),
                 Place(
                     "Пхукет",
                     "Популярное направление",
-                    "file:///android_asset/pl3.png"
+                    "file:///android_asset/pl3.png",
+                    {viewModel.setDestination(it)}
                 )
             ))
         ))

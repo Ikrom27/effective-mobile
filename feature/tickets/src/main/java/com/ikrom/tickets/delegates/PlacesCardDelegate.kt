@@ -16,7 +16,8 @@ data class PlacesItem(
 data class Place(
     val label: String,
     val description: String,
-    val image: String
+    val image: String,
+    val onClick: (String) -> Unit
 )
 
 class PlacesCardDelegate: DelegateAdapter
@@ -32,6 +33,9 @@ class PlacesCardDelegate: DelegateAdapter
                     label = place.label
                     description = place.description
                     imageUrl = place.image
+                    setOnClickListener {
+                        place.onClick(place.label)
+                    }
                 }
                 binding.root.addView(placeView)
             }
