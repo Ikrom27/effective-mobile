@@ -1,12 +1,11 @@
 package com.ikrom.tickets.delegates
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemFlightsCardBinding
 import com.ikrom.tickets.views.FlightView
@@ -21,10 +20,10 @@ data class Flight(
     val price: Int
 )
 
-class FlightsDelegate: BaseDelegateAdapter<FlightsItem, FlightsDelegate.FlightsViewHolder>(
+class FlightsDelegate: DelegateAdapter<FlightsItem, FlightsDelegate.FlightsVH>(
     FlightsItem::class.java
 ) {
-    inner class FlightsViewHolder(val binding: ItemFlightsCardBinding): DelegateViewHolder<FlightsItem>(binding){
+    inner class FlightsVH(val binding: ItemFlightsCardBinding): DelegateVH<FlightsItem>(binding){
         private val colors = listOf(
             ContextCompat.getColor(binding.root.context, com.example.ui.R.color.red),
             ContextCompat.getColor(binding.root.context, com.example.ui.R.color.blue),
@@ -54,7 +53,7 @@ class FlightsDelegate: BaseDelegateAdapter<FlightsItem, FlightsDelegate.FlightsV
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemFlightsCardBinding.inflate(inflater, parent, false)
-        return FlightsViewHolder(binding)
+        return FlightsVH(binding)
     }
 
     override fun getLayoutId(): Int {

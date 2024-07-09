@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 
-abstract class BaseDelegateAdapter<T : AdapterItem, in VH: BaseDelegateAdapter.DelegateViewHolder<T>>(
+abstract class DelegateAdapter<T : AdapterItem, in VH: DelegateAdapter.DelegateVH<T>>(
     private val classType: Class<out T>
 ) {
     abstract fun createViewHolder(inflater: LayoutInflater, parent: ViewGroup): RecyclerView.ViewHolder
@@ -18,14 +18,14 @@ abstract class BaseDelegateAdapter<T : AdapterItem, in VH: BaseDelegateAdapter.D
 
     abstract fun getLayoutId(): Int
 
-    abstract class DelegateViewHolder<T: AdapterItem>(binding: ViewBinding): RecyclerView.ViewHolder(binding.root){
+    abstract class DelegateVH<T: AdapterItem>(binding: ViewBinding): RecyclerView.ViewHolder(binding.root){
         abstract fun bind(item: T)
     }
 
 
 
     fun onBindViewHolder(item: T, viewHolder: RecyclerView.ViewHolder) {
-        (viewHolder as DelegateViewHolder<T>).bind(item)
+        (viewHolder as DelegateVH<T>).bind(item)
     }
 
     fun isForViewType(item: AdapterItem): Boolean {

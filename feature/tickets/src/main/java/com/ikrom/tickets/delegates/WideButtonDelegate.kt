@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemWideButtonBinding
 
@@ -13,10 +13,10 @@ data class WideButtonItem(
     override val onClick: (() -> Unit)?
 ): AdapterItem()
 
-class WideButtonDelegate: BaseDelegateAdapter
-<WideButtonItem, WideButtonDelegate.WideButtonViewHolder>(WideButtonItem::class.java) {
-    inner class WideButtonViewHolder(val binding: ItemWideButtonBinding):
-        DelegateViewHolder<WideButtonItem>(binding){
+class WideButtonDelegate: DelegateAdapter
+<WideButtonItem, WideButtonDelegate.WideButtonVH>(WideButtonItem::class.java) {
+    inner class WideButtonVH(val binding: ItemWideButtonBinding):
+        DelegateVH<WideButtonItem>(binding){
 
         override fun bind(item: WideButtonItem) {
             binding.label.text = item.label
@@ -29,7 +29,7 @@ class WideButtonDelegate: BaseDelegateAdapter
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemWideButtonBinding.inflate(inflater, parent, false)
-        return WideButtonViewHolder(binding)
+        return WideButtonVH(binding)
     }
 
     override fun getLayoutId(): Int {

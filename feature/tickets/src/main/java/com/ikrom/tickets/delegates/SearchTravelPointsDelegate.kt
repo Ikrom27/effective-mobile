@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
-import com.ikrom.tickets.databinding.ItemSearchTravelPointsCardBinding
+import com.ikrom.tickets.databinding.ItemTravelPointsDestinationBinding
 
 data class SearchTravelPointItem(
     val origin: String,
@@ -17,12 +17,12 @@ data class SearchTravelPointItem(
     val onClear: () -> Unit
 ): AdapterItem()
 
-class SearchTravelPointsDelegate: BaseDelegateAdapter
-<SearchTravelPointItem, SearchTravelPointsDelegate.SearchTravelPointsViewHolder>(
+class SearchTravelPointsDelegate: DelegateAdapter
+<SearchTravelPointItem, SearchTravelPointsDelegate.SearchTravelPointsVH>(
     SearchTravelPointItem::class.java) {
 
-    inner class SearchTravelPointsViewHolder(val binding: ItemSearchTravelPointsCardBinding):
-        DelegateViewHolder<SearchTravelPointItem>(binding){
+    inner class SearchTravelPointsVH(val binding: ItemTravelPointsDestinationBinding):
+        DelegateVH<SearchTravelPointItem>(binding){
 
             override fun bind(item: SearchTravelPointItem) {
                 binding.originText.text = item.origin
@@ -41,8 +41,8 @@ class SearchTravelPointsDelegate: BaseDelegateAdapter
         inflater: LayoutInflater,
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
-        val binding = ItemSearchTravelPointsCardBinding.inflate(inflater, parent, false)
-        return SearchTravelPointsViewHolder(binding)
+        val binding = ItemTravelPointsDestinationBinding.inflate(inflater, parent, false)
+        return SearchTravelPointsVH(binding)
     }
 
     override fun getLayoutId(): Int {

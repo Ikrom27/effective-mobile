@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.example.utils.CyrilFilter
 import com.ikrom.tickets.R
-import com.ikrom.tickets.databinding.ItemTravelPointsBinding
+import com.ikrom.tickets.databinding.ItemTravelPointsOriginBinding
 
 data class TravelPointsItem(
     val defaultText: String,
@@ -16,9 +16,9 @@ data class TravelPointsItem(
     val onDestinationClick: () -> Unit,
 ): AdapterItem()
 
-class TravelPointsDelegate: BaseDelegateAdapter<TravelPointsItem, TravelPointsDelegate.TravelPointsViewHolder>(
+class TravelPointsDelegate: DelegateAdapter<TravelPointsItem, TravelPointsDelegate.TravelPointsVH>(
     TravelPointsItem::class.java) {
-    inner class TravelPointsViewHolder(val binding: ItemTravelPointsBinding): DelegateViewHolder<TravelPointsItem>(binding){
+    inner class TravelPointsVH(val binding: ItemTravelPointsOriginBinding): DelegateVH<TravelPointsItem>(binding){
         override fun bind(item: TravelPointsItem) {
             binding.originText.setText(item.defaultText)
 
@@ -37,8 +37,8 @@ class TravelPointsDelegate: BaseDelegateAdapter<TravelPointsItem, TravelPointsDe
         inflater: LayoutInflater,
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
-        val binding = ItemTravelPointsBinding.inflate(inflater, parent, false)
-        return TravelPointsViewHolder(binding)
+        val binding = ItemTravelPointsOriginBinding.inflate(inflater, parent, false)
+        return TravelPointsVH(binding)
     }
 
     override fun getLayoutId(): Int {

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemSearchButtonsBinding
 
@@ -15,9 +15,9 @@ data class SearchButtonsItem(
     val onHotTicketsClick: () -> Unit
 ): AdapterItem()
 
-class SearchButtonsDelegate: BaseDelegateAdapter
-<SearchButtonsItem, SearchButtonsDelegate.SearchButtonsViewHolder>(SearchButtonsItem::class.java) {
-    inner class SearchButtonsViewHolder(val binding: ItemSearchButtonsBinding): DelegateViewHolder<SearchButtonsItem>(binding){
+class SearchButtonsDelegate: DelegateAdapter
+<SearchButtonsItem, SearchButtonsDelegate.SearchButtonsVH>(SearchButtonsItem::class.java) {
+    inner class SearchButtonsVH(val binding: ItemSearchButtonsBinding): DelegateVH<SearchButtonsItem>(binding){
         override fun bind(item: SearchButtonsItem) {
             binding.btnAnywhere.setOnClickListener{
                 item.onAnyWhereClick()
@@ -39,7 +39,7 @@ class SearchButtonsDelegate: BaseDelegateAdapter
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemSearchButtonsBinding.inflate(inflater, parent, false)
-        return SearchButtonsViewHolder(binding)
+        return SearchButtonsVH(binding)
     }
 
     override fun getLayoutId(): Int {

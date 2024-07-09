@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemNotifyBinding
 
@@ -13,10 +13,10 @@ data class NotifyItem(
     val onNotifyChange: (Boolean) -> Unit
 ): AdapterItem()
 
-class NotifyDelegate: BaseDelegateAdapter
-<NotifyItem, NotifyDelegate.NotifyViewHolder>(NotifyItem::class.java) {
+class NotifyDelegate: DelegateAdapter
+<NotifyItem, NotifyDelegate.NotifyVH>(NotifyItem::class.java) {
 
-    inner class NotifyViewHolder(val binding: ItemNotifyBinding): DelegateViewHolder<NotifyItem>(binding) {
+    inner class NotifyVH(val binding: ItemNotifyBinding): DelegateVH<NotifyItem>(binding) {
         override fun bind(item: NotifyItem) {
             binding.label.text = item.label
 
@@ -29,7 +29,7 @@ class NotifyDelegate: BaseDelegateAdapter
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemNotifyBinding.inflate(inflater, parent, false)
-        return NotifyViewHolder(binding)
+        return NotifyVH(binding)
     }
 
     override fun getLayoutId(): Int {

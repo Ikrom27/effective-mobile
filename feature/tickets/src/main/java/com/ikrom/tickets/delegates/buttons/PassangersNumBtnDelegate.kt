@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemBtnPassendersNumBinding
 
@@ -13,11 +13,11 @@ data class PassengersNumBtnItem(
     val passengersClass: String
 ): AdapterItem()
 
-class PassengersNumBtnDelegate: BaseDelegateAdapter
-<PassengersNumBtnItem, PassengersNumBtnDelegate.PassengersNumBtnViewHolder>(PassengersNumBtnItem::class.java) {
+class PassengersNumBtnDelegate: DelegateAdapter
+<PassengersNumBtnItem, PassengersNumBtnDelegate.PassengersNumBtnVH>(PassengersNumBtnItem::class.java) {
 
-    inner class PassengersNumBtnViewHolder(val binding: ItemBtnPassendersNumBinding):
-        DelegateViewHolder<PassengersNumBtnItem>(binding){
+    inner class PassengersNumBtnVH(val binding: ItemBtnPassendersNumBinding):
+        DelegateVH<PassengersNumBtnItem>(binding){
 
         override fun bind(item: PassengersNumBtnItem) {
             binding.passengerText.text = "${item.passengersNum},${item.passengersClass}"
@@ -30,7 +30,7 @@ class PassengersNumBtnDelegate: BaseDelegateAdapter
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemBtnPassendersNumBinding.inflate(inflater, parent, false)
-        return PassengersNumBtnViewHolder(binding)
+        return PassengersNumBtnVH(binding)
     }
 
     override fun getLayoutId(): Int {

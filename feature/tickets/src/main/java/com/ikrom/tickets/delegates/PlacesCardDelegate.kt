@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemPlaceCardBinding
 import com.ikrom.tickets.views.PlaceView
@@ -19,12 +19,12 @@ data class Place(
     val image: String
 )
 
-class PlacesCardDelegate: BaseDelegateAdapter
-<PlacesItem, PlacesCardDelegate.RestPlacesViewHolder>(
+class PlacesCardDelegate: DelegateAdapter
+<PlacesItem, PlacesCardDelegate.RestPlacesVH>(
     PlacesItem::class.java
 ) {
-    inner class RestPlacesViewHolder(val binding: ItemPlaceCardBinding):
-        DelegateViewHolder<PlacesItem>(binding){
+    inner class RestPlacesVH(val binding: ItemPlaceCardBinding):
+        DelegateVH<PlacesItem>(binding){
 
         override fun bind(item: PlacesItem){
             for (place in item.places){
@@ -44,7 +44,7 @@ class PlacesCardDelegate: BaseDelegateAdapter
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemPlaceCardBinding.inflate(inflater, parent, false)
-        return RestPlacesViewHolder(binding)
+        return RestPlacesVH(binding)
     }
 
     override fun getLayoutId(): Int {

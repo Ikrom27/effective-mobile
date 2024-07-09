@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import com.example.ui.adapters.BaseAdapter
-import com.example.ui.adapters.BaseDelegateAdapter
+import com.example.ui.adapters.DelegateAdapter
 import com.example.ui.adapters.AdapterItem
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemHorizontalListBinding
@@ -20,10 +19,10 @@ data class HorizontalListItem(
 
 
 class HorizontalListDelegate:
-    BaseDelegateAdapter<HorizontalListItem, HorizontalListDelegate.HorizontalListViewHolder>
+    DelegateAdapter<HorizontalListItem, HorizontalListDelegate.HorizontalListVH>
         (HorizontalListItem::class.java) {
-    inner class HorizontalListViewHolder(val binding: ItemHorizontalListBinding):
-        DelegateViewHolder<HorizontalListItem>(binding){
+    inner class HorizontalListVH(val binding: ItemHorizontalListBinding):
+        DelegateVH<HorizontalListItem>(binding){
         override fun bind(item: HorizontalListItem) {
             binding.recyclerView.layoutManager = LinearLayoutManager(binding.root.context)
                 .apply { orientation = LinearLayoutManager.HORIZONTAL }
@@ -41,7 +40,7 @@ class HorizontalListDelegate:
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
         val binding = ItemHorizontalListBinding.inflate(inflater, parent, false)
-        return HorizontalListViewHolder(binding)
+        return HorizontalListVH(binding)
     }
 
     override fun getLayoutId(): Int {
