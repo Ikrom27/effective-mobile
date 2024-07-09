@@ -11,7 +11,8 @@ import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemTripOriginBinding
 
 data class TripOriginItem(
-    val defaultText: String,
+    val originText: String,
+    val destinationText: String,
     val onOriginChange: (String) -> Unit,
     val onDestinationClick: () -> Unit,
 ): AdapterItem()
@@ -20,8 +21,8 @@ class TripOriginDelegate: DelegateAdapter<TripOriginItem, TripOriginDelegate.Vie
     TripOriginItem::class.java) {
     inner class ViewHolder(val binding: ItemTripOriginBinding): DelegateVH<TripOriginItem>(binding){
         override fun bind(item: TripOriginItem) {
-            binding.originText.setText(item.defaultText)
-
+            binding.originText.setText(item.originText)
+            binding.destinationText.setText(item.destinationText)
             binding.originText.filters = arrayOf(CyrilFilter())
             binding.originText.doOnTextChanged {text, _, _, _ ->
                 item.onOriginChange(text.toString())
@@ -30,7 +31,6 @@ class TripOriginDelegate: DelegateAdapter<TripOriginItem, TripOriginDelegate.Vie
                 item.onDestinationClick()
             }
         }
-
     }
 
     override fun createViewHolder(

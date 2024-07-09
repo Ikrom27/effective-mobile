@@ -76,12 +76,15 @@ class SearchFragment : Fragment() {
     }
 
     private fun updateAdapterData(){
+        viewModel.setDestination(sharedViewModel.destinationLiveData.value ?: "")
         viewModel.destinationText.observe(viewLifecycleOwner) {text ->
             compositeAdapter.updateItem(0,
                 TripDestinationItem(
-                    "Москва",
+                    sharedViewModel.originText,
                     text,
-                    {},
+                    {
+                        viewModel.setDestination(it)
+                    },
                     {
                         viewModel.setDestination("")
                     }

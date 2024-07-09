@@ -9,6 +9,7 @@
         <item name="android:textAppearance">@style/placeDescriptionAppearance</item>
     </style>
     <style name="tripOriginInput" parent="fullWeightText">
+        <item name="android:imeOptions">actionDone</item>
         <item name="android:textColorHint">@color/grey6</item>
         <item name="android:textColor">@color/text1</item>
         <item name="android:textAppearance">@style/tripTextAppearance</item>

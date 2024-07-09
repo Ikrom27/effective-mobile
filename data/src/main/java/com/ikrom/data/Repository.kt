@@ -30,7 +30,8 @@ class Repository @Inject constructor(
     }
 
     fun getSavedOrigin(): String {
-        return sharedPreferences.getString(ORIGIN_KEY, "") ?: ""
+        val origin = sharedPreferences.getString(ORIGIN_KEY, "") ?: ""
+        return origin
     }
 
     companion object {

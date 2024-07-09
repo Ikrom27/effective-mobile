@@ -112,7 +112,7 @@ class TicketsFragment : Fragment() {
     private fun setupAdapterData(){
         sharedViewModel.destinationLiveData.observe(viewLifecycleOwner){
             if(it.isBlank()){
-                setFirstEnterItems()
+                setDefaultItems()
             } else {
                 setTicketsItems()
             }
@@ -146,14 +146,18 @@ class TicketsFragment : Fragment() {
         }
     }
 
-    private fun setFirstEnterItems(){
+    private fun setDefaultItems(){
         ticketsViewModel.updateArtistList()
         compositeAdapter.setItems(listOf(
             TextItem("Поиск дешевых авиабилетов"),
             TripOriginItem(
-                defaultText = ticketsViewModel.originText,
+                originText = ticketsViewModel.originText,
+                destinationText = sharedViewModel.destinationLiveData.value ?: "",
                 onOriginChange = { ticketsViewModel.onOriginChange(it) },
-                onDestinationClick = { showDialog() }
+                onDestinationClick = {
+                    sharedViewModel.originText = ticketsViewModel.originText
+                    showDialog()
+                }
             ),
             HorizontalListItem(adapter = ArtistsDelegate().apply { setItems(emptyList()) })
         ))
@@ -194,8 +198,8 @@ class TicketsFragment : Fragment() {
         )
     }
 
-    override fun onStop() {
+    override fun onPause() {
         ticketsViewModel.saveOrigin()
-        super.onStop()
+        super.onPause()
     }
 }
