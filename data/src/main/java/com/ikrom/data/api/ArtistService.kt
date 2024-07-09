@@ -6,9 +6,9 @@ import retrofit2.http.GET
 
 interface ArtistService {
     @GET("u/0/uc?id=1o1nX3uFISrG1gR-jr_03Qlu4_KEZWhav&export=download")
-    fun getArtists(): Single<ArtistApiResponse>
+    fun getArtists(): Single<ArtistServiceResponse>
 }
 
-data class ArtistApiResponse(
+data class ArtistServiceResponse(
     val offers: List<ArtistResponse>
 )

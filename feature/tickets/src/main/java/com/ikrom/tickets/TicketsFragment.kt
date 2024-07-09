@@ -114,19 +114,14 @@ class TicketsFragment : Fragment() {
     }
 
     private fun setTicketsItems() {
+        ticketsViewModel.updateFlightsList()
         compositeAdapter.setItems(listOf(
             FilledTravelPointItem(
                 ticketsViewModel.originText,
                 sharedViewModel.destinationLiveData.value ?: ""
             ) { showDialog() },
             getButtonsList(),
-            FlightsItem(
-                flights = listOf(
-                    Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231),
-                    Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231),
-                    Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231)
-                )
-            ),
+            FlightsItem(listOf()),
             WideButtonItem(
                 "Посмотреть все билеты",
                 {}
@@ -135,6 +130,11 @@ class TicketsFragment : Fragment() {
                 "Подписка на цену", {}
             )
         ))
+        ticketsViewModel.flightsItem.observe(viewLifecycleOwner){
+            compositeAdapter.updateItem(2,
+                FlightsItem(it.take(3))
+            )
+        }
         if (binding.recyclerView.itemDecorationCount == 0){
             binding.recyclerView.addItemDecoration(ticketsItemDecoration)
         }
@@ -150,6 +150,11 @@ class TicketsFragment : Fragment() {
             ),
             HorizontalListItem(adapter = ArtistsDelegate().apply { setItems(emptyList()) })
         ))
+        ticketsViewModel.artistItem.observe(viewLifecycleOwner){
+            compositeAdapter.updateItem(3,
+                HorizontalListItem(ArtistsDelegate().apply { setItems(it) })
+            )
+        }
         if (binding.recyclerView.itemDecorationCount > 0){
             binding.recyclerView.removeItemDecoration(ticketsItemDecoration)
         }

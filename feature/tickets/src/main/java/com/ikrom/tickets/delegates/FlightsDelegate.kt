@@ -34,6 +34,9 @@ class FlightsDelegate: BaseDelegateAdapter<FlightsItem, FlightsDelegate.FlightsV
         override fun bind(item: FlightsItem) {
             binding.root.removeAllViews()
             for(i in 0 until 3){
+                if(item.flights.size <= i){
+                    break
+                }
                 val flightView = FlightView(binding.root.context).apply {
                     airline = item.flights[i].airline
                     flightTimes = item.flights[i].times

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.ikrom.data.Repository
 import com.ikrom.data.di.ArtsitService
+import com.ikrom.data.di.FlightsService
 import com.ikrom.tickets.di.TicketsDeps
 import dagger.BindsInstance
 import dagger.Component
@@ -30,6 +31,10 @@ class AppModule {
     @Provides
     @AppScope
     fun provideArtistService() = ArtsitService()
+
+    @Provides
+    @AppScope
+    fun provideFlightsService() = FlightsService()
 
     @Provides
     @AppScope

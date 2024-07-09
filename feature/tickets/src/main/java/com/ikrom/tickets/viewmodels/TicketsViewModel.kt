@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.utils.PriceUtils
 import com.ikrom.data.Repository
 import com.ikrom.tickets.delegates.ArtistItem
+import com.ikrom.tickets.delegates.Flight
+import com.ikrom.tickets.delegates.FlightsItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -21,13 +23,17 @@ class TicketsViewModel @Inject constructor(
     private val _artistList = MutableLiveData<List<ArtistItem>>()
     val artistItem: LiveData<List<ArtistItem>> = _artistList
 
-    private lateinit var disposable: Disposable
+    private val _flightsItem = MutableLiveData<List<Flight>>()
+    val flightsItem: LiveData<List<Flight>> = _flightsItem
 
-    var originText: String = getLastOrigin()
+    private val disposables = ArrayList<Disposable>()
+
+    var originText: String = repository.getSavedOrigin()
 
     @SuppressLint("CheckResult")
     fun updateArtistList() {
-        disposable = repository.getArtistsList()
+        disposables.add(
+            repository.getArtistsList()
             .subscribeOn(Schedulers.io())
             .map {
                 it.offers.map { artistResponse ->
@@ -42,11 +48,30 @@ class TicketsViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _artistList.postValue(it)
-            }, {})
+            }, {
+
+            })
+        )
     }
 
-    fun getLastOrigin(): String {
-        return repository.getSavedOrigin()
+    fun updateFlightsList(){
+        disposables.add(
+            repository.getFlightsList()
+                .subscribeOn(Schedulers.io())
+                .map {
+                    it.tickets_offers.map { flightsResponse ->
+                        Flight(
+                            airline = flightsResponse.airline,
+                            times = flightsResponse.timeRange,
+                            price = flightsResponse.price.value
+                        )
+                    }
+                }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _flightsItem.postValue(it)
+                }, {})
+        )
     }
 
     fun onOriginChange(text: String){
@@ -58,10 +83,10 @@ class TicketsViewModel @Inject constructor(
     }
 
     override fun onCleared() {
-        super.onCleared()
-        if (this::disposable.isInitialized){
+        for(disposable in disposables){
             disposable.dispose()
         }
+        super.onCleared()
     }
 
     class Factory @Inject constructor(

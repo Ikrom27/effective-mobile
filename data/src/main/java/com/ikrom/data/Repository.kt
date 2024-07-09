@@ -2,18 +2,25 @@ package com.ikrom.data
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.ikrom.data.api.ArtistApiResponse
+import com.ikrom.data.api.ArtistServiceResponse
 import com.ikrom.data.api.ArtistService
+import com.ikrom.data.api.FlightsService
+import com.ikrom.data.api.FlightsServiceResponse
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
 
 class Repository @Inject constructor(
-    val artistService: ArtistService,
-    val sharedPreferences: SharedPreferences
+    private val artistService: ArtistService,
+    private val sharedPreferences: SharedPreferences,
+    private val flightsService: FlightsService
 ) {
-    fun getArtistsList(): Single<ArtistApiResponse> {
+    fun getArtistsList(): Single<ArtistServiceResponse> {
         return artistService.getArtists()
+    }
+
+    fun getFlightsList(): Single<FlightsServiceResponse> {
+        return flightsService.getTickets()
     }
 
     fun saveOrigin(text: String){
