@@ -15,6 +15,8 @@ import com.example.ui.adapters.CompositeAdapter
 import com.example.ui.adapters.item_decorations.MarginItemDecoration
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
 import com.ikrom.tickets.delegates.ArtistsDelegate
+import com.ikrom.tickets.delegates.FilledTravelPointItem
+import com.ikrom.tickets.delegates.FilledTravelPointsDelegate
 import com.ikrom.tickets.delegates.Flight
 import com.ikrom.tickets.delegates.FlightsDelegate
 import com.ikrom.tickets.delegates.FlightsItem
@@ -53,6 +55,7 @@ class TicketsFragment : Fragment() {
         .add(TravelPointsDelegate())
         .add(HorizontalListDelegate())
         .add(FlightsDelegate())
+        .add(FilledTravelPointsDelegate())
         .build()
 
     override fun onAttach(context: Context) {
@@ -94,6 +97,10 @@ class TicketsFragment : Fragment() {
 
     private fun setTicketsItems() {
         compositeAdapter.setItems(listOf(
+            FilledTravelPointItem(
+                ticketsViewModel.originText,
+                sharedViewModel.destinationLiveData.value ?: ""
+            ) { showDialog() },
             getButtonsList(),
             FlightsItem(
                 flights = listOf(
