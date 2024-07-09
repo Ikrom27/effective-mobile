@@ -6,9 +6,14 @@ import androidx.lifecycle.ViewModel
 
 class SearchViewModel: ViewModel() {
     private val _destinationText = MutableLiveData("")
-    val destinationText: LiveData<String> = _destinationText
+    val destinationLiveData: LiveData<String> = _destinationText
+    var destinationField = ""
 
     fun setDestination(text: String) {
-        _destinationText.value = text
+        _destinationText.postValue(text)
+    }
+
+    fun onDestinationTyped(text: String){
+        destinationField = text
     }
 }

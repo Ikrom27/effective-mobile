@@ -1,6 +1,5 @@
 package com.ikrom.tickets.delegates.travelpoints_delegates
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
@@ -14,7 +13,6 @@ data class TripDestinationItem(
     val origin: String,
     val destination: String,
     val onDestinationChange: (String) -> Unit,
-    val onClear: () -> Unit
 ): AdapterItem()
 
 class TripDestinationDelegate: DelegateAdapter
@@ -26,13 +24,12 @@ class TripDestinationDelegate: DelegateAdapter
 
             override fun bind(item: TripDestinationItem) {
                 binding.originText.text = item.origin
-                binding.destinationText.setText(item.destination)
                 binding.icClear.setOnClickListener {
                     binding.destinationText.setText("")
                 }
+                binding.destinationText.setText(item.destination)
                 binding.destinationText.doOnTextChanged {text, _, _, _ ->
                     item.onDestinationChange(text.toString())
-                    Log.d("adapter", text.toString())
                 }
         }
     }

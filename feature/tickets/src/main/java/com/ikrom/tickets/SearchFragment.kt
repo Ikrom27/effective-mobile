@@ -44,7 +44,7 @@ class SearchFragment : Fragment() {
 
     private fun setupAdapterData(){
         compositeAdapter.setItems(listOf(
-            TripDestinationItem("", "", {}, {}),
+            TripDestinationItem("", "") {},
             SearchButtonsItem({
                 findNavController().navigate(R.id.to_empty_fragment)
             }, {
@@ -77,18 +77,14 @@ class SearchFragment : Fragment() {
 
     private fun updateAdapterData(){
         viewModel.setDestination(sharedViewModel.destinationLiveData.value ?: "")
-        viewModel.destinationText.observe(viewLifecycleOwner) {text ->
+        viewModel.destinationLiveData.observe(viewLifecycleOwner) { text ->
             compositeAdapter.updateItem(0,
                 TripDestinationItem(
                     sharedViewModel.originText,
-                    text,
-                    {
-                        viewModel.setDestination(it)
-                    },
-                    {
-                        viewModel.setDestination("")
-                    }
-                )
+                    text
+                ) { input ->
+                    viewModel.onDestinationTyped(input)
+                }
             )
         }
     }
@@ -104,7 +100,7 @@ class SearchFragment : Fragment() {
     }
 
     override fun onStop() {
-        sharedViewModel.destinationLiveData.value = viewModel.destinationText.value
+        sharedViewModel.destinationLiveData.value = viewModel.destinationField
         compositeAdapter.clear()
         super.onStop()
     }
