@@ -17,12 +17,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#58595b" />
+        app:tint="@color/white" />
 
     <TextView
         android:id="@+id/originText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/TripOriginText"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/separator"
@@ -37,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/originText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/originText"
-        app:tint="@color/white3" />
+        app:tint="@color/white" />
 
     <View
         android:id="@+id/separator"
@@ -57,12 +56,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/destination_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/destination_text"
-        app:tint="@color/white3" />
+        app:tint="@color/white5" />
 
     <TextView
         android:id="@+id/destination_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/TripOriginText"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/icClear"
         app:layout_constraintStart_toStartOf="@+id/separator"

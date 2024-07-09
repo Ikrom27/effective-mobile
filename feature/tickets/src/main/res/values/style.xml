@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="travelInput">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/travelInputAppearance</item>
-        <item name="android:background">@null</item>
-    </style>
 
+    <!-- Components -->
     <style name="placeLabel" parent="fullWeightText">
         <item name="android:textAppearance">@style/placeLabelAppearance</item>
     </style>
-
     <style name="placeDescription" parent="fullWeightText">
         <item name="android:textAppearance">@style/placeDescriptionAppearance</item>
+    </style>
+    <style name="tripOriginInput" parent="fullWeightText">
+        <item name="android:textColorHint">@color/grey6</item>
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:textAppearance">@style/tripTextAppearance</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="TripOriginText" parent="fullWeightText">
+        <item name="android:textColor">@color/text2</item>
+        <item name="android:textAppearance">@style/tripTextAppearance</item>
     </style>
 
     <style name="travelCard">

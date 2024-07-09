@@ -19,13 +19,20 @@
 
     <TextView
         android:id="@+id/originText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/TripOriginText"
         android:layout_marginLeft="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/icBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icBack"
         app:layout_constraintTop_toTopOf="@+id/icBack" />
+
+    <EditText
+        android:id="@+id/destination_text"
+        android:hint="@string/travel_destination_hint"
+        style="@style/tripOriginInput"
+        app:layout_constraintEnd_toStartOf="@+id/icClear"
+        app:layout_constraintStart_toStartOf="@+id/originText"
+        app:layout_constraintTop_toTopOf="@+id/icDestination" />
 
     <View
         android:id="@+id/separator"
@@ -55,13 +62,4 @@
         app:layout_constraintTop_toTopOf="@+id/icDestination"
         app:tint="@color/white3" />
 
-    <EditText
-        android:id="@+id/destination_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/travel_destination_hint"
-        style="@style/travelInput"
-        app:layout_constraintEnd_toStartOf="@+id/icClear"
-        app:layout_constraintStart_toStartOf="@+id/originText"
-        app:layout_constraintTop_toTopOf="@+id/icDestination" />
 </androidx.constraintlayout.widget.ConstraintLayout>

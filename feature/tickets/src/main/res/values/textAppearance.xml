@@ -6,11 +6,16 @@
         <item name="fontWeight">600</item>
         <item name="lineHeight">19.5dp</item>
     </style>
-
     <style name="placeDescriptionAppearance">
         <item name="android:textColor">@color/text5</item>
         <item name="android:textSize">14sp</item>
         <item name="fontWeight">400</item>
         <item name="lineHeight">16.8dp</item>
+    </style>
+    
+    <style name="tripTextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:lineHeight">20.8dp</item>
     </style>
 </resources>
