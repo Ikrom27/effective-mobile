@@ -28,6 +28,8 @@ import com.ikrom.tickets.delegates.TextAdapter
 import com.ikrom.tickets.delegates.TextItem
 import com.ikrom.tickets.delegates.TravelPointsDelegate
 import com.ikrom.tickets.delegates.TravelPointsItem
+import com.ikrom.tickets.delegates.WideButtonDelegate
+import com.ikrom.tickets.delegates.WideButtonItem
 import com.ikrom.tickets.delegates.buttons.DateBtnDelegate
 import com.ikrom.tickets.delegates.buttons.DateBtnItem
 import com.ikrom.tickets.delegates.buttons.PassengersNumBtnDelegate
@@ -59,6 +61,7 @@ class TicketsFragment : Fragment() {
         .add(HorizontalListDelegate())
         .add(FlightsDelegate())
         .add(FilledTravelPointsDelegate())
+        .add(WideButtonDelegate())
         .build()
 
     override fun onAttach(context: Context) {
@@ -120,6 +123,10 @@ class TicketsFragment : Fragment() {
                     Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231),
                     Flight("dfsdf", listOf("21:23", "21:23", "21:23", "21:23"), 231)
                 )
+            ),
+            WideButtonItem(
+                "Посмотреть все билеты",
+                {}
             )
         ))
         if (binding.recyclerView.itemDecorationCount == 0){
