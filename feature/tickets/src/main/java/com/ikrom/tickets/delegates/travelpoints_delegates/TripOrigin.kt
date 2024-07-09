@@ -8,18 +8,18 @@ import com.example.ui.adapters.AdapterItem
 import com.example.ui.adapters.DelegateAdapter
 import com.example.utils.CyrilFilter
 import com.ikrom.tickets.R
-import com.ikrom.tickets.databinding.ItemTravelPointsOriginBinding
+import com.ikrom.tickets.databinding.ItemTripOriginBinding
 
-data class TravelPointsOriginItem(
+data class TripOriginItem(
     val defaultText: String,
     val onOriginChange: (String) -> Unit,
     val onDestinationClick: () -> Unit,
 ): AdapterItem()
 
-class TravelPointsOriginDelegate: DelegateAdapter<TravelPointsOriginItem, TravelPointsOriginDelegate.ViewHolder>(
-    TravelPointsOriginItem::class.java) {
-    inner class ViewHolder(val binding: ItemTravelPointsOriginBinding): DelegateVH<TravelPointsOriginItem>(binding){
-        override fun bind(item: TravelPointsOriginItem) {
+class TripOriginDelegate: DelegateAdapter<TripOriginItem, TripOriginDelegate.ViewHolder>(
+    TripOriginItem::class.java) {
+    inner class ViewHolder(val binding: ItemTripOriginBinding): DelegateVH<TripOriginItem>(binding){
+        override fun bind(item: TripOriginItem) {
             binding.originText.setText(item.defaultText)
 
             binding.originText.filters = arrayOf(CyrilFilter())
@@ -37,11 +37,11 @@ class TravelPointsOriginDelegate: DelegateAdapter<TravelPointsOriginItem, Travel
         inflater: LayoutInflater,
         parent: ViewGroup
     ): RecyclerView.ViewHolder {
-        val binding = ItemTravelPointsOriginBinding.inflate(inflater, parent, false)
+        val binding = ItemTripOriginBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.item_travel_points_origin
+        return R.layout.item_trip_origin
     }
 }

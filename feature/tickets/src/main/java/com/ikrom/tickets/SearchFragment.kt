@@ -16,15 +16,15 @@ import com.ikrom.tickets.delegates.PlacesCardDelegate
 import com.ikrom.tickets.delegates.PlacesItem
 import com.ikrom.tickets.delegates.SearchButtonsDelegate
 import com.ikrom.tickets.delegates.SearchButtonsItem
-import com.ikrom.tickets.delegates.travelpoints_delegates.TravelPointDestinationItem
-import com.ikrom.tickets.delegates.travelpoints_delegates.TravelPointsDestinationDelegate
+import com.ikrom.tickets.delegates.travelpoints_delegates.TripDestinationItem
+import com.ikrom.tickets.delegates.travelpoints_delegates.TripDestinationDelegate
 import com.ikrom.tickets.viewmodels.SearchViewModel
 import com.ikrom.tickets.viewmodels.SharedViewModel
 
 class SearchFragment : Fragment() {
 
     private val compositeAdapter: CompositeAdapter = CompositeAdapter.Builder()
-        .add(TravelPointsDestinationDelegate())
+        .add(TripDestinationDelegate())
         .add(SearchButtonsDelegate())
         .add(PlacesCardDelegate())
         .build()
@@ -44,7 +44,7 @@ class SearchFragment : Fragment() {
 
     private fun setupAdapterData(){
         compositeAdapter.setItems(listOf(
-            TravelPointDestinationItem("", "", {}, {}),
+            TripDestinationItem("", "", {}, {}),
             SearchButtonsItem({
                 findNavController().navigate(R.id.to_empty_fragment)
             }, {
@@ -78,7 +78,7 @@ class SearchFragment : Fragment() {
     private fun updateAdapterData(){
         viewModel.destinationText.observe(viewLifecycleOwner) {text ->
             compositeAdapter.updateItem(0,
-                TravelPointDestinationItem(
+                TripDestinationItem(
                     "Москва",
                     text,
                     {},

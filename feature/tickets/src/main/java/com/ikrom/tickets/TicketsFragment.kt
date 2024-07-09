@@ -17,8 +17,8 @@ import com.example.ui.adapters.item_decorations.MarginItemDecoration
 import com.example.utils.extensions.dpToPx
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
 import com.ikrom.tickets.delegates.ArtistsDelegate
-import com.ikrom.tickets.delegates.travelpoints_delegates.TravelPointFilledItem
-import com.ikrom.tickets.delegates.travelpoints_delegates.TravelPointsFilledDelegate
+import com.ikrom.tickets.delegates.travelpoints_delegates.TripFilledItem
+import com.ikrom.tickets.delegates.travelpoints_delegates.TripFilledDelegate
 import com.ikrom.tickets.delegates.FlightsDelegate
 import com.ikrom.tickets.delegates.FlightsItem
 import com.ikrom.tickets.delegates.HorizontalListDelegate
@@ -27,8 +27,8 @@ import com.ikrom.tickets.delegates.NotifyDelegate
 import com.ikrom.tickets.delegates.NotifyItem
 import com.ikrom.tickets.delegates.TextAdapter
 import com.ikrom.tickets.delegates.TextItem
-import com.ikrom.tickets.delegates.travelpoints_delegates.TravelPointsOriginDelegate
-import com.ikrom.tickets.delegates.travelpoints_delegates.TravelPointsOriginItem
+import com.ikrom.tickets.delegates.travelpoints_delegates.TripOriginDelegate
+import com.ikrom.tickets.delegates.travelpoints_delegates.TripOriginItem
 import com.ikrom.tickets.delegates.WideButtonDelegate
 import com.ikrom.tickets.delegates.WideButtonItem
 import com.ikrom.tickets.delegates.buttons.DateBtnDelegate
@@ -58,10 +58,10 @@ class TicketsFragment : Fragment() {
     private lateinit var binding: FragmentTicketsBinding
     private val compositeAdapter = CompositeAdapter.Builder()
         .add(TextAdapter())
-        .add(TravelPointsOriginDelegate())
+        .add(TripOriginDelegate())
         .add(HorizontalListDelegate())
         .add(FlightsDelegate())
-        .add(TravelPointsFilledDelegate())
+        .add(TripFilledDelegate())
         .add(WideButtonDelegate())
         .add(NotifyDelegate())
         .build()
@@ -122,7 +122,7 @@ class TicketsFragment : Fragment() {
     private fun setTicketsItems() {
         ticketsViewModel.updateFlightsList()
         compositeAdapter.setItems(listOf(
-            TravelPointFilledItem(
+            TripFilledItem(
                 ticketsViewModel.originText,
                 sharedViewModel.destinationLiveData.value ?: ""
             ) { showDialog() },
@@ -150,7 +150,7 @@ class TicketsFragment : Fragment() {
         ticketsViewModel.updateArtistList()
         compositeAdapter.setItems(listOf(
             TextItem("Поиск дешевых авиабилетов"),
-            TravelPointsOriginItem(
+            TripOriginItem(
                 defaultText = ticketsViewModel.originText,
                 onOriginChange = { ticketsViewModel.onOriginChange(it) },
                 onDestinationClick = { showDialog() }
