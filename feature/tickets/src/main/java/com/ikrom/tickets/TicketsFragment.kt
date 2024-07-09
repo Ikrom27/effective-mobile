@@ -69,9 +69,7 @@ class TicketsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        ViewModelProvider(this).get<TicketsComponentViewModel>()
-            .ticketsComponent.inject(this)
-        super.onAttach(context)
+        inject()
     }
 
     override fun onCreateView(
@@ -80,9 +78,18 @@ class TicketsFragment : Fragment() {
     ): View {
         val view = setupBinding()
         setupRecyclerView()
-        ticketsViewModel.updateArtistList()
         initValues()
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupAdapterData()
+    }
+
+    private fun inject(){
+        ViewModelProvider(this).get<TicketsComponentViewModel>()
+            .ticketsComponent.inject(this)
     }
 
     private fun initValues(){
@@ -103,7 +110,7 @@ class TicketsFragment : Fragment() {
         binding.recyclerView.adapter = compositeAdapter
     }
 
-    fun setupAdapterData(){
+    private fun setupAdapterData(){
         sharedViewModel.destinationLiveData.observe(viewLifecycleOwner){
             if(it.isBlank()){
                 setFirstEnterItems()
@@ -141,6 +148,7 @@ class TicketsFragment : Fragment() {
     }
 
     private fun setFirstEnterItems(){
+        ticketsViewModel.updateArtistList()
         compositeAdapter.setItems(listOf(
             TextItem("Поиск дешевых авиабилетов"),
             TravelPointsItem(
@@ -185,11 +193,6 @@ class TicketsFragment : Fragment() {
                 isHorizontal = true
             )
         )
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupAdapterData()
     }
 
     override fun onStop() {

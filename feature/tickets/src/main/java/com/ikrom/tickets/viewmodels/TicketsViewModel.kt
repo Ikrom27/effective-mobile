@@ -30,7 +30,6 @@ class TicketsViewModel @Inject constructor(
 
     var originText: String = repository.getSavedOrigin()
 
-    @SuppressLint("CheckResult")
     fun updateArtistList() {
         disposables.add(
             repository.getArtistsList()
