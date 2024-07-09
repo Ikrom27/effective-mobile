@@ -36,6 +36,6 @@ class FilledTravelPointsDelegate: BaseDelegateAdapter
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.item_search_travel_points_card
+        return R.layout.item_travel_points_destination
     }
 }

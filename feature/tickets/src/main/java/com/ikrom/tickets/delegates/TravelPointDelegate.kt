@@ -42,6 +42,6 @@ class TravelPointsDelegate: BaseDelegateAdapter<TravelPointsItem, TravelPointsDe
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.item_travel_points
+        return R.layout.item_travel_points_origin
     }
 }
