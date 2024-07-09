@@ -25,13 +25,14 @@ class FlightsDelegate: BaseDelegateAdapter<FlightsItem, FlightsDelegate.FlightsV
     FlightsItem::class.java
 ) {
     inner class FlightsViewHolder(val binding: ItemFlightsCardBinding): DelegateViewHolder<FlightsItem>(binding){
-        val colors = listOf(
+        private val colors = listOf(
             ContextCompat.getColor(binding.root.context, com.example.ui.R.color.red),
             ContextCompat.getColor(binding.root.context, com.example.ui.R.color.blue),
             ContextCompat.getColor(binding.root.context, com.example.ui.R.color.white)
         )
 
         override fun bind(item: FlightsItem) {
+            binding.root.removeAllViews()
             for(i in 0 until 3){
                 val flightView = FlightView(binding.root.context).apply {
                     airline = item.flights[i].airline

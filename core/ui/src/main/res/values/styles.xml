@@ -29,7 +29,8 @@
         <item name="android:minWidth">@dimen/btn_small_width</item>
         <item name="android:layout_height">@dimen/btn_small_height</item>
         <item name="android:background">@drawable/bg_rectangle_rounded_50</item>
-        <item name="android:backgroundTint">@color/grey4</item>
+        <item name="android:backgroundTint">@color/search_travel_points_card</item>
+        <item name="android:backgroundTintMode">src_atop</item>
     </style>
 
     <style name="BottomSheetStyle" parent="Widget.Material3.BottomSheet">

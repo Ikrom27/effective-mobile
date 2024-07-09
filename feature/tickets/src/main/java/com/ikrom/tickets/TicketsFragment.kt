@@ -11,8 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.ui.adapters.CompositeAdapter
 import com.example.ui.adapters.item_decorations.MarginItemDecoration
+import com.example.utils.extensions.dpToPx
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
 import com.ikrom.tickets.delegates.ArtistsDelegate
 import com.ikrom.tickets.delegates.FilledTravelPointItem
@@ -48,6 +50,7 @@ class TicketsFragment : Fragment() {
     }
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var ticketsItemDecoration: ItemDecoration
 
     private lateinit var binding: FragmentTicketsBinding
     private val compositeAdapter = CompositeAdapter.Builder()
@@ -72,7 +75,16 @@ class TicketsFragment : Fragment() {
         val view = setupBinding()
         setupRecyclerView()
         ticketsViewModel.updateArtistList()
+        initValues()
         return view
+    }
+
+    private fun initValues(){
+        ticketsItemDecoration = MarginItemDecoration(
+            startSpace = 47.dpToPx(requireContext()),
+            endSpace = 110.dpToPx(requireContext()),
+            betweenSpace = 13.dpToPx(requireContext()),
+        )
     }
 
     private fun setupBinding(): View {
@@ -110,6 +122,9 @@ class TicketsFragment : Fragment() {
                 )
             )
         ))
+        if (binding.recyclerView.itemDecorationCount == 0){
+            binding.recyclerView.addItemDecoration(ticketsItemDecoration)
+        }
     }
 
     private fun setFirstEnterItems(){
@@ -122,6 +137,9 @@ class TicketsFragment : Fragment() {
             ),
             HorizontalListItem(adapter = ArtistsDelegate().apply { setItems(emptyList()) })
         ))
+        if (binding.recyclerView.itemDecorationCount > 0){
+            binding.recyclerView.removeItemDecoration(ticketsItemDecoration)
+        }
     }
 
     private fun showDialog(){
