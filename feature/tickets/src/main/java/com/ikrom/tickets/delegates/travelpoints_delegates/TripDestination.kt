@@ -6,6 +6,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
 import com.example.ui.adapters.DelegateAdapter
+import com.example.utils.CyrilFilter
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemTripDestinationBinding
 
@@ -28,6 +29,7 @@ class TripDestinationDelegate: DelegateAdapter
                     binding.destinationText.setText("")
                 }
                 binding.destinationText.setText(item.destination)
+                binding.destinationText.filters = arrayOf(CyrilFilter())
                 binding.destinationText.doOnTextChanged {text, _, _, _ ->
                     item.onDestinationChange(text.toString())
                 }
