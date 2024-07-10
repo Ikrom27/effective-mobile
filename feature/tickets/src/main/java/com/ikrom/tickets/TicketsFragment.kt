@@ -141,10 +141,13 @@ class TicketsFragment : Fragment() {
 
     private fun setupAdapterData(){
         sharedViewModel.destinationLiveData.observe(viewLifecycleOwner){
-            if(it.isBlank()){
-                setDefaultItems()
-            } else {
+            ticketsViewModel.showTicketsItems.postValue(it.isNotBlank())
+        }
+        ticketsViewModel.showTicketsItems.observe(viewLifecycleOwner){
+            if(it){
                 setTicketsItems()
+            } else {
+                setDefaultItems()
             }
         }
     }
@@ -204,12 +207,14 @@ class TicketsFragment : Fragment() {
             )
         ))
         ticketsViewModel.artistItem.observe(viewLifecycleOwner){
-            compositeAdapter.updateItem(3,
-                HorizontalListItem(
-                    adapter = ArtistsDelegate().apply { setItems(it) },
-                    itemDecoration = artistsItemDecoration,
+            if (!ticketsViewModel.showTicketsItems.value!!){
+                compositeAdapter.updateItem(3,
+                    HorizontalListItem(
+                        adapter = ArtistsDelegate().apply { setItems(it) },
+                        itemDecoration = artistsItemDecoration,
+                    )
                 )
-            )
+            }
         }
         binding.recyclerView.clearDecorations()
         binding.recyclerView.addItemDecoration(defaultItemDecoration)

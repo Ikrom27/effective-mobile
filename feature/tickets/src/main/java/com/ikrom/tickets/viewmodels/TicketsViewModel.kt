@@ -28,6 +28,7 @@ class TicketsViewModel @Inject constructor(
     val flightsItem: LiveData<List<Flight>> = _flightsItem
 
     private val disposables = ArrayList<Disposable>()
+    val showTicketsItems = MutableLiveData(false)
 
     var originText: String = repository.getSavedOrigin()
 
