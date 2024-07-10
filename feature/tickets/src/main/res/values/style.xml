@@ -60,6 +60,10 @@
     </style>
 
     <style name="notifyText" parent="fullWeightText">
-        <item name="android:textAppearance"></item>
+        <item name="android:textAppearance">@style/notifyTextAppearance</item>
+    </style>
+
+    <style name="titleDelegate" parent="fullWeightText">
+        <item name="android:textAppearance">@style/titleTextAppearance</item>
     </style>
 </resources>

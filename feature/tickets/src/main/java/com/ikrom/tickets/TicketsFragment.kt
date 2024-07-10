@@ -1,5 +1,6 @@
 package com.ikrom.tickets
 
+import android.content.ClipData.Item
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,6 +28,8 @@ import com.ikrom.tickets.delegates.NotifyDelegate
 import com.ikrom.tickets.delegates.NotifyItem
 import com.ikrom.tickets.delegates.TextAdapter
 import com.ikrom.tickets.delegates.TextItem
+import com.ikrom.tickets.delegates.TitleDelegate
+import com.ikrom.tickets.delegates.TitleItem
 import com.ikrom.tickets.delegates.travelpoints_delegates.TripOriginDelegate
 import com.ikrom.tickets.delegates.travelpoints_delegates.TripOriginItem
 import com.ikrom.tickets.delegates.WideButtonDelegate
@@ -56,6 +59,7 @@ class TicketsFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var ticketsItemDecoration: ItemDecoration
+    private lateinit var defaultItemDecoration: ItemDecoration
 
     private lateinit var binding: FragmentTicketsBinding
     private val compositeAdapter = CompositeAdapter.Builder()
@@ -66,6 +70,7 @@ class TicketsFragment : Fragment() {
         .add(TripFilledDelegate())
         .add(WideButtonDelegate())
         .add(NotifyDelegate())
+        .add(TitleDelegate())
         .build()
 
     override fun onAttach(context: Context) {
@@ -98,6 +103,11 @@ class TicketsFragment : Fragment() {
             startSpace = 47.dpToPx(requireContext()),
             endSpace = 110.dpToPx(requireContext()),
             betweenSpace = 13.dpToPx(requireContext()),
+        )
+        defaultItemDecoration = MarginItemDecoration(
+            startSpace = 28.dpToPx(requireContext()),
+            endSpace = 28.dpToPx(requireContext()),
+            betweenSpace = 19.dpToPx(requireContext())
         )
     }
 
@@ -143,7 +153,10 @@ class TicketsFragment : Fragment() {
                 FlightsItem(it.take(3))
             )
         }
-        if (binding.recyclerView.itemDecorationCount == 0){
+        if (binding.recyclerView.itemDecorationCount > 0){
+            binding.recyclerView.removeItemDecoration(defaultItemDecoration)
+            binding.recyclerView.addItemDecoration(ticketsItemDecoration)
+        } else {
             binding.recyclerView.addItemDecoration(ticketsItemDecoration)
         }
     }
@@ -161,6 +174,7 @@ class TicketsFragment : Fragment() {
                     showDialog()
                 }
             ),
+            TitleItem("Музыкально отлетать"),
             HorizontalListItem(adapter = ArtistsDelegate().apply { setItems(emptyList()) })
         ))
         ticketsViewModel.artistItem.observe(viewLifecycleOwner){
@@ -170,6 +184,9 @@ class TicketsFragment : Fragment() {
         }
         if (binding.recyclerView.itemDecorationCount > 0){
             binding.recyclerView.removeItemDecoration(ticketsItemDecoration)
+            binding.recyclerView.addItemDecoration(defaultItemDecoration)
+        } else {
+            binding.recyclerView.addItemDecoration(defaultItemDecoration)
         }
     }
 
