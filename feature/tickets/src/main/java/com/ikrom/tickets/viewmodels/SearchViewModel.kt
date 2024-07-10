@@ -11,6 +11,7 @@ class SearchViewModel: ViewModel() {
 
     fun setDestination(text: String) {
         _destinationText.postValue(text)
+        destinationField = text
     }
 
     fun onDestinationTyped(text: String){
