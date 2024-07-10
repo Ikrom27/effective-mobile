@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".AllTicketsFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_marginHorizontal="@dimen/main_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <Toolbar
         style="@style/all_tickets_toolbar">
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,8 +45,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 </FrameLayout>

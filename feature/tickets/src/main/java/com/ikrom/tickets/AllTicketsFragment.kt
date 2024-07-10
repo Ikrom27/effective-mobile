@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.adapters.CompositeAdapter
+import com.example.ui.adapters.item_decorations.MarginItemDecoration
+import com.example.utils.extensions.dpToPx
 import com.ikrom.tickets.databinding.FragmentAllTicketsBinding
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
 import com.ikrom.tickets.delegates.TicketDelegate
@@ -82,6 +84,15 @@ class AllTicketsFragment : Fragment() {
     private fun setupRecyclerView(){
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = compositeAdapter
+        if(binding.recyclerView.itemDecorationCount == 0){
+            binding.recyclerView.addItemDecoration(
+                MarginItemDecoration(
+                    startSpace = 106.dpToPx(requireContext()),
+                    endSpace = 106.dpToPx(requireContext()),
+                    betweenSpace = 24.dpToPx(requireContext())
+                )
+            )
+        }
     }
 
     private fun setupAdapterData(){
