@@ -38,7 +38,7 @@ class TicketDelegate: DelegateAdapter<TicketItem, TicketDelegate.ViewHolder>(Tic
             binding.destinationAirlineCode.text = item.arrivalAirport
 
             val durationHour = "${calculateDuration(item.departureDate, item.arrivalDate)}ч в пути"
-            val transfer = if (!item.hasTransfer) "/ Без пересадок" else ""
+            val transfer = if (!item.hasTransfer) " / Без пересадок" else ""
             binding.info.text = durationHour + transfer
         }
 
