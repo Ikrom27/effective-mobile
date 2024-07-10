@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui.adapters.CompositeAdapter
 import com.example.ui.adapters.item_decorations.MarginItemDecoration
@@ -79,6 +81,9 @@ class AllTicketsFragment : Fragment() {
     private fun setupToolbar(){
         binding.title.text = "${origin}-${destination}"
         binding.subtitle.text = attributes
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupRecyclerView(){
