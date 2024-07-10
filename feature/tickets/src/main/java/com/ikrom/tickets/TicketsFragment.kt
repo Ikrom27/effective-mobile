@@ -14,6 +14,7 @@ import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.ui.adapters.CompositeAdapter
+import com.example.ui.adapters.extensions.clearDecorations
 import com.example.ui.adapters.item_decorations.MarginItemDecoration
 import com.example.utils.extensions.dpToPx
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
@@ -60,6 +61,8 @@ class TicketsFragment : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var ticketsItemDecoration: ItemDecoration
     private lateinit var defaultItemDecoration: ItemDecoration
+    private lateinit var artistsItemDecoration: ItemDecoration
+    private lateinit var buttonsItemDecoration: ItemDecoration
 
     private lateinit var binding: FragmentTicketsBinding
     private val compositeAdapter = CompositeAdapter.Builder()
@@ -83,8 +86,8 @@ class TicketsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = setupBinding()
-        setupRecyclerView()
         initValues()
+        setupRecyclerView()
         return view
     }
 
@@ -108,6 +111,20 @@ class TicketsFragment : Fragment() {
             startSpace = 28.dpToPx(requireContext()),
             endSpace = 28.dpToPx(requireContext()),
             betweenSpace = 19.dpToPx(requireContext())
+        )
+        val margin = resources.getDimension(com.example.ui.R.dimen.main_horizontal_margin)
+        artistsItemDecoration = MarginItemDecoration(
+            startSpace = margin.toInt(),
+            endSpace = margin.toInt(),
+            betweenSpace = 67.dpToPx(requireContext()),
+            true
+        )
+
+        buttonsItemDecoration = MarginItemDecoration(
+            startSpace = margin.toInt(),
+            endSpace = margin.toInt(),
+            betweenSpace = margin.toInt() / 2,
+            true
         )
     }
 
@@ -153,12 +170,8 @@ class TicketsFragment : Fragment() {
                 FlightsItem(it.take(3))
             )
         }
-        if (binding.recyclerView.itemDecorationCount > 0){
-            binding.recyclerView.removeItemDecoration(defaultItemDecoration)
-            binding.recyclerView.addItemDecoration(ticketsItemDecoration)
-        } else {
-            binding.recyclerView.addItemDecoration(ticketsItemDecoration)
-        }
+        binding.recyclerView.clearDecorations()
+        binding.recyclerView.addItemDecoration(ticketsItemDecoration)
     }
 
     private fun setDefaultItems(){
@@ -175,19 +188,21 @@ class TicketsFragment : Fragment() {
                 }
             ),
             TitleItem("Музыкально отлетать"),
-            HorizontalListItem(adapter = ArtistsDelegate().apply { setItems(emptyList()) })
+            HorizontalListItem(
+                adapter = ArtistsDelegate().apply { setItems(emptyList()) },
+                itemDecoration = artistsItemDecoration
+            )
         ))
         ticketsViewModel.artistItem.observe(viewLifecycleOwner){
             compositeAdapter.updateItem(3,
-                HorizontalListItem(ArtistsDelegate().apply { setItems(it) })
+                HorizontalListItem(
+                    adapter = ArtistsDelegate().apply { setItems(it) },
+                    itemDecoration = artistsItemDecoration,
+                )
             )
         }
-        if (binding.recyclerView.itemDecorationCount > 0){
-            binding.recyclerView.removeItemDecoration(ticketsItemDecoration)
-            binding.recyclerView.addItemDecoration(defaultItemDecoration)
-        } else {
-            binding.recyclerView.addItemDecoration(defaultItemDecoration)
-        }
+        binding.recyclerView.clearDecorations()
+        binding.recyclerView.addItemDecoration(defaultItemDecoration)
     }
 
     private fun showDialog(){
@@ -197,7 +212,6 @@ class TicketsFragment : Fragment() {
 
 
     private fun getButtonsList(): HorizontalListItem {
-        val margin = resources.getDimension(com.example.ui.R.dimen.main_horizontal_margin)
         return HorizontalListItem(
             adapter = CompositeAdapter.Builder()
                 .add(DateBtnDelegate())
@@ -210,12 +224,7 @@ class TicketsFragment : Fragment() {
                     add(PassengersNumBtnItem(1, "эконом"))
                     add(FilterBtnItem({}))
                 },
-            itemDecoration = MarginItemDecoration(
-                startSpace = margin.toInt(),
-                endSpace = margin.toInt(),
-                betweenSpace = margin.toInt() / 2,
-                isHorizontal = true
-            )
+            itemDecoration = buttonsItemDecoration
         )
     }
 
