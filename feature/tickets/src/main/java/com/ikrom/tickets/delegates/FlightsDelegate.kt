@@ -1,5 +1,8 @@
 package com.ikrom.tickets.delegates
 
+import android.content.Context
+import android.graphics.Typeface
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
 import com.example.ui.adapters.DelegateAdapter
+import com.example.utils.extensions.dpToPx
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemFlightsCardBinding
 import com.ikrom.tickets.views.FlightView
@@ -33,10 +37,8 @@ class FlightsDelegate: DelegateAdapter<FlightsItem, FlightsDelegate.FlightsVH>(
         )
 
         override fun bind(item: FlightsItem) {
-            if (item.flights.isEmpty()){
-                binding.root.visibility = View.GONE
-                return
-            }
+            binding.root.removeAllViews()
+            binding.root.addView(getTitleView(binding.root.context))
             for(i in 0 until 3){
                 if(item.flights.size <= i){
                     break
@@ -49,6 +51,22 @@ class FlightsDelegate: DelegateAdapter<FlightsItem, FlightsDelegate.FlightsVH>(
                     hideSeparator = i == 2
                 }
                 binding.root.addView(flightView, i+1)
+            }
+        }
+
+        private fun getTitleView(context: Context): View {
+            return TextView(context).apply {
+                layoutParams = ViewGroup.MarginLayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    topMargin = 16.dpToPx(context)
+                    marginStart = 16.dpToPx(context)
+                    marginEnd = 16.dpToPx(context)
+                }
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+                setTypeface(null, Typeface.BOLD)
+                text = context.getString(R.string.flights_card_title)
             }
         }
     }
