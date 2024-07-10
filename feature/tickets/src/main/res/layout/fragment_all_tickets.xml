@@ -44,5 +44,56 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </Toolbar>
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginBottom="110dp"
+        android:background="@drawable/bg_rectangle_rounded_50"
+        android:backgroundTint="@color/blue"
+        android:layout_gravity="center_horizontal|bottom">
 
+        <ImageView
+            android:id="@+id/icFilter"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:src="@drawable/ic_filter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/filterText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/medium14"
+            android:layout_marginStart="4dp"
+            android:text="Фильтр"
+            app:layout_constraintBottom_toBottomOf="@+id/icFilter"
+            app:layout_constraintStart_toEndOf="@+id/icFilter"
+            app:layout_constraintTop_toTopOf="@+id/icFilter" />
+
+        <ImageView
+            android:id="@+id/icStats"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:src="@drawable/ic_stats"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/filterText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/statsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/medium14Italic"
+            android:layout_marginStart="4dp"
+            android:text="График цен"
+            app:layout_constraintBottom_toBottomOf="@+id/icStats"
+            app:layout_constraintStart_toEndOf="@+id/icStats"
+            app:layout_constraintTop_toTopOf="@+id/icStats" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
 </FrameLayout>

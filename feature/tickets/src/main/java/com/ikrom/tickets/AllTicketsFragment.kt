@@ -88,7 +88,7 @@ class AllTicketsFragment : Fragment() {
             binding.recyclerView.addItemDecoration(
                 MarginItemDecoration(
                     startSpace = 106.dpToPx(requireContext()),
-                    endSpace = 106.dpToPx(requireContext()),
+                    endSpace = 156.dpToPx(requireContext()),
                     betweenSpace = 24.dpToPx(requireContext())
                 )
             )
