@@ -3,14 +3,14 @@
     <style name="placeLabelAppearance">
         <item name="android:textColor">@color/text1</item>
         <item name="android:textSize">16sp</item>
-        <item name="fontWeight">600</item>
-        <item name="lineHeight">19.5dp</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:lineHeight">19.5dp</item>
     </style>
     <style name="placeDescriptionAppearance">
         <item name="android:textColor">@color/text5</item>
         <item name="android:textSize">14sp</item>
-        <item name="fontWeight">400</item>
-        <item name="lineHeight">16.8dp</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:lineHeight">16.8dp</item>
     </style>
     
     <style name="tripTextAppearance">
@@ -23,20 +23,18 @@
         <item name="android:textColor">@color/text1</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontWeight">500</item>
-        <item name="lineHeight">16.8dp</item>
-        <item name="fontStyle">italic</item>
+        <item name="android:textStyle">italic</item>
     </style>
     <style name="flightsPriceAppearance">
         <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontWeight">500</item>
-        <item name="lineHeight">16.8dp</item>
-        <item name="fontStyle">italic</item>
+        <item name="android:textStyle">italic</item>
     </style>
     <style name="flightsTimeRangeAppearance">
         <item name="android:textColor">@color/text1</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontWeight">500</item>
-        <item name="lineHeight">16.8dp</item>
+        <item name="android:lineHeight">16.8dp</item>
     </style>
 </resources>

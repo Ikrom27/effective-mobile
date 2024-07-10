@@ -1,5 +1,6 @@
 package com.ikrom.tickets.views
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -31,7 +32,7 @@ class FlightView: FrameLayout {
 
     var price: Int = 0
         set(value) {
-            binding.price.text = PriceUtils.format(value)
+            binding.price.text = PriceUtils.format(value) + " ₽ "
             field = value
         }
 
