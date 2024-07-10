@@ -3,6 +3,7 @@ package com.ikrom.tickets.di
 import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import com.ikrom.data.Repository
+import com.ikrom.tickets.AllTicketsFragment
 import com.ikrom.tickets.TicketsFragment
 import dagger.Component
 import kotlin.properties.Delegates.notNull
@@ -11,6 +12,7 @@ import kotlin.properties.Delegates.notNull
 @Component(dependencies = [TicketsDeps::class])
 interface TicketsComponent{
     fun inject(fragment: TicketsFragment)
+    fun inject(fragment: AllTicketsFragment)
 
     @Component.Builder
     interface Builder {
@@ -33,6 +35,12 @@ interface TicketsDepsProvider {
 
 object TicketsDepsStore : TicketsDepsProvider {
     override var deps: TicketsDeps by notNull()
+}
+
+internal class AllTicketsComponentViewModel : ViewModel() {
+
+    val allTicketsComponent =
+        DaggerTicketsComponent.builder().deps(TicketsDepsProvider.deps).build()
 }
 
 internal class TicketsComponentViewModel : ViewModel() {

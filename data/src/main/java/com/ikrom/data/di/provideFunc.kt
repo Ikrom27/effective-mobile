@@ -2,6 +2,7 @@ package com.ikrom.data.di
 
 import com.ikrom.data.api.ArtistService
 import com.ikrom.data.api.FlightsService
+import com.ikrom.data.api.TicketsService
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,4 +23,13 @@ fun FlightsService(): FlightsService {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     return retrofit.create(FlightsService::class.java)
+}
+
+fun TicketsService(): TicketsService {
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://drive.google.com/")
+        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    return retrofit.create(TicketsService::class.java)
 }

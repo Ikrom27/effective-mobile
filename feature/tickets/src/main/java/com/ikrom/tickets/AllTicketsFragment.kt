@@ -5,8 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.ikrom.tickets.databinding.FragmentAllTicketsBinding
 import com.ikrom.tickets.databinding.FragmentTicketsBinding
+import com.ikrom.tickets.di.AllTicketsComponentViewModel
+import com.ikrom.tickets.di.TicketsComponentViewModel
+import com.ikrom.tickets.viewmodels.AllTicketsViewModel
+import com.ikrom.tickets.viewmodels.TicketsViewModel
+import dagger.Lazy
+import javax.inject.Inject
 
 
 class AllTicketsFragment : Fragment() {
@@ -17,14 +26,26 @@ class AllTicketsFragment : Fragment() {
     private lateinit var destination: String
     private lateinit var attributes: String
 
+    @Inject
+    internal lateinit var allTicketsViewModel: Lazy<AllTicketsViewModel.Factory>
+    private val viewModel: AllTicketsViewModel by viewModels {
+        allTicketsViewModel.get()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = setupBinding()
+        inject()
         init()
         setupToolbar()
         return view
+    }
+
+    private fun inject(){
+        ViewModelProvider(this).get<AllTicketsComponentViewModel>()
+            .allTicketsComponent.inject(this)
     }
 
     private fun init(){
