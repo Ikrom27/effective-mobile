@@ -2,6 +2,7 @@ package com.ikrom.tickets.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.adapters.AdapterItem
@@ -31,7 +32,6 @@ class FlightsDelegate: DelegateAdapter<FlightsItem, FlightsDelegate.FlightsVH>(
         )
 
         override fun bind(item: FlightsItem) {
-            binding.root.removeAllViews()
             for(i in 0 until 3){
                 if(item.flights.size <= i){
                     break
@@ -43,7 +43,7 @@ class FlightsDelegate: DelegateAdapter<FlightsItem, FlightsDelegate.FlightsVH>(
                     color = colors[i]
                     hideSeparator = i == 2
                 }
-                binding.root.addView(flightView)
+                binding.root.addView(flightView, i+1)
             }
         }
     }

@@ -31,6 +31,13 @@
         <item name="android:textAppearance">@style/flightsTimeRangeAppearance</item>
     </style>
 
+    <style name="destinationButtonLabel">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">34dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
     <style name="travelCard">
         <item name="android:layout_width">296dp</item>
         <item name="android:layout_height">90dp</item>

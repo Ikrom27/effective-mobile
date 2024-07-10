@@ -17,9 +17,7 @@
             android:layout_height="@dimen/icon_large"/>
         <TextView
             android:id="@+id/difficultRouteText"
-            android:layout_width="80dp"
-            android:layout_height="34dp"
-            android:gravity="center"
+            style="@style/destinationButtonLabel"
             android:text="@string/difficult_route_label"
             />
     </LinearLayout>
@@ -41,9 +39,7 @@
             android:layout_height="@dimen/icon_large"/>
         <TextView
             android:id="@+id/anywhereText"
-            android:layout_width="80dp"
-            android:layout_height="34dp"
-            android:gravity="center"
+            style="@style/destinationButtonLabel"
             android:text="@string/anywhere_label"  />
     </LinearLayout>
 
@@ -64,9 +60,7 @@
             android:layout_height="@dimen/icon_large"/>
         <TextView
             android:id="@+id/weekendsText"
-            android:layout_width="80dp"
-            android:layout_height="34dp"
-            android:gravity="center"
+            style="@style/destinationButtonLabel"
             android:text="@string/weekends_label"  />
     </LinearLayout>
 
@@ -87,9 +81,7 @@
             android:layout_height="@dimen/icon_large"/>
         <TextView
             android:id="@+id/hotTicketsText"
-            android:layout_width="80dp"
-            android:layout_height="34dp"
-            android:gravity="center"
+            style="@style/destinationButtonLabel"
             android:text="@string/hot_tickets_label"  />
     </LinearLayout>
 
