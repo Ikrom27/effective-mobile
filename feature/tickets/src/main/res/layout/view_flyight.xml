@@ -18,8 +18,7 @@
 
     <TextView
         android:id="@+id/airline"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/flightsLabel"
         android:layout_marginStart="8dp"
         app:layout_constraintEnd_toStartOf="@+id/price"
         app:layout_constraintStart_toEndOf="@+id/airlineImage"
@@ -27,15 +26,13 @@
 
     <TextView
         android:id="@+id/price"
-        android:textColor="@color/blue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/btnPrice" />
+        style="@style/flightsPrice"
+        app:layout_constraintEnd_toStartOf="@+id/btnPrice"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/flight_times"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/flightsTimeRange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/airline"
         app:layout_constraintTop_toBottomOf="@+id/airline" />

@@ -19,6 +19,17 @@
         <item name="android:textColor">@color/text2</item>
         <item name="android:textAppearance">@style/tripTextAppearance</item>
     </style>
+    <style name="flightsLabel" parent="fullWeightText">
+        <item name="android:textAppearance">@style/flightsLabelAppearance</item>
+    </style>
+    <style name="flightsPrice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/flightsPriceAppearance</item>
+    </style>
+    <style name="flightsTimeRange" parent="fullWeightText">
+        <item name="android:textAppearance">@style/flightsTimeRangeAppearance</item>
+    </style>
 
     <style name="travelCard">
         <item name="android:layout_width">296dp</item>
