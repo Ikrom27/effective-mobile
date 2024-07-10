@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.ui.adapters.CompositeAdapter
@@ -159,7 +160,9 @@ class TicketsFragment : Fragment() {
             FlightsItem(listOf()),
             WideButtonItem(
                 "Посмотреть все билеты",
-                {}
+                {
+                    findNavController().navigate(R.id.action_ticketsFragment_to_allTicketsFragment)
+                }
             ),
             NotifyItem(
                 "Подписка на цену", {}
