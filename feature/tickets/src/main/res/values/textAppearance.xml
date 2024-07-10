@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="semibold16">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:lineHeight">19.5dp</item>
+    </style>
+
+    <style name="medium14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+
     <style name="placeLabelAppearance">
         <item name="android:textColor">@color/text1</item>
         <item name="android:textSize">16sp</item>
@@ -52,7 +64,7 @@
         <item name="android:lineHeight">20.8dp</item>
     </style>
 
-    <style name="notifyTextAppearance" parent="fullWeightText">
+    <style name="notifyTextAppearance" parent="fullWidthText">
         <item name="android:textColor">@color/text1</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontWeight">400</item>

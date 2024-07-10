@@ -11,4 +11,5 @@
     <color name="text3">@color/white3</color>
     <color name="text4">@color/white4</color>
     <color name="text5">@color/grey5</color>
+    <color name="text6">#9f9f9f</color>
 </resources>

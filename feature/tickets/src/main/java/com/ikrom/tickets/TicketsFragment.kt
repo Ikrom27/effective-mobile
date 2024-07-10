@@ -159,11 +159,18 @@ class TicketsFragment : Fragment() {
             getButtonsList(),
             FlightsItem(listOf()),
             WideButtonItem(
-                "Посмотреть все билеты",
-                {
-                    findNavController().navigate(R.id.action_ticketsFragment_to_allTicketsFragment)
+                "Посмотреть все билеты"
+            ) {
+                val bundle = Bundle().apply {
+                    putString("origin", ticketsViewModel.originText)
+                    putString("destination", sharedViewModel.destinationLiveData.value)
+                    putString("attributes", "${DATE}, ${PASSENGERS}")
                 }
-            ),
+                findNavController().navigate(
+                    R.id.action_ticketsFragment_to_allTicketsFragment,
+                    bundle
+                )
+            },
             NotifyItem(
                 "Подписка на цену", {}
             )
@@ -229,6 +236,11 @@ class TicketsFragment : Fragment() {
                 },
             itemDecoration = buttonsItemDecoration
         )
+    }
+
+    companion object {
+        const val DATE = "23 Февраля"
+        const val PASSENGERS = "1 пассажир"
     }
 
     override fun onPause() {

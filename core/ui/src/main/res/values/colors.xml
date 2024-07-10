@@ -25,4 +25,5 @@
     <color name="menu_selected_icon">#ff2261BC</color>
     <color name="menu_unselected_icon">@color/grey6</color>
 
+
 </resources>

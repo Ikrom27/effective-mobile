@@ -18,5 +18,5 @@
         android:id="@+id/allTicketsFragment"
         android:name="com.ikrom.tickets.AllTicketsFragment"
         android:label="fragment_all_tickets"
-        tools:layout="@layout/fragment_all_tickets" />
+        tools:layout="@layout/fragment_all_tickets"/>
 </navigation>

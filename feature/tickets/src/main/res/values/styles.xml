@@ -2,24 +2,24 @@
 <resources>
 
     <!-- Components -->
-    <style name="placeLabel" parent="fullWeightText">
+    <style name="placeLabel" parent="fullWidthText">
         <item name="android:textAppearance">@style/placeLabelAppearance</item>
     </style>
-    <style name="placeDescription" parent="fullWeightText">
+    <style name="placeDescription" parent="fullWidthText">
         <item name="android:textAppearance">@style/placeDescriptionAppearance</item>
     </style>
-    <style name="tripOriginInput" parent="fullWeightText">
+    <style name="tripOriginInput" parent="fullWidthText">
         <item name="android:imeOptions">actionDone</item>
         <item name="android:textColorHint">@color/grey6</item>
         <item name="android:textColor">@color/text1</item>
         <item name="android:textAppearance">@style/tripTextAppearance</item>
         <item name="android:background">@null</item>
     </style>
-    <style name="TripOriginText" parent="fullWeightText">
+    <style name="TripOriginText" parent="fullWidthText">
         <item name="android:textColor">@color/text2</item>
         <item name="android:textAppearance">@style/tripTextAppearance</item>
     </style>
-    <style name="flightsLabel" parent="fullWeightText">
+    <style name="flightsLabel" parent="fullWidthText">
         <item name="android:textAppearance">@style/flightsLabelAppearance</item>
     </style>
     <style name="flightsPrice">
@@ -27,7 +27,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/flightsPriceAppearance</item>
     </style>
-    <style name="flightsTimeRange" parent="fullWeightText">
+    <style name="flightsTimeRange" parent="fullWidthText">
         <item name="android:textAppearance">@style/flightsTimeRangeAppearance</item>
     </style>
 
@@ -59,19 +59,30 @@
         <item name="android:textAppearance">@style/wideButtonTextAppearance</item>
     </style>
 
-    <style name="notifyText" parent="fullWeightText">
+    <style name="notifyText" parent="fullWidthText">
         <item name="android:textAppearance">@style/notifyTextAppearance</item>
     </style>
 
-    <style name="titleDelegate" parent="fullWeightText">
+    <style name="titleDelegate" parent="fullWidthText">
         <item name="android:textAppearance">@style/titleTextAppearance</item>
     </style>
 
     <style name="all_tickets_toolbar">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">56dp</item>
         <item name="android:layout_marginHorizontal">@dimen/main_horizontal_margin</item>
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:background">@color/surface_background</item>
+        <item name="android:paddingVertical">8dp</item>
+    </style>
+
+    <style name="toolbarTitle" parent="fullWidthText">
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:textAppearance">@style/semibold16</item>
+    </style>
+
+    <style name="toolbarSubtitle" parent="fullWidthText">
+        <item name="android:textColor">@color/text6</item>
+        <item name="android:textAppearance">@style/medium14</item>
     </style>
 </resources>
