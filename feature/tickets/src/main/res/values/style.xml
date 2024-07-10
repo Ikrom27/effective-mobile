@@ -53,8 +53,13 @@
         <item name="android:backgroundTint">@color/search_travel_points_card</item>
         <item name="android:backgroundTintMode">src_atop</item>
     </style>
+
     <style name="wideBtn">
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">@style/wideButtonTextAppearance</item>
+    </style>
+
+    <style name="notifyText" parent="fullWeightText">
+        <item name="android:textAppearance"></item>
     </style>
 </resources>
