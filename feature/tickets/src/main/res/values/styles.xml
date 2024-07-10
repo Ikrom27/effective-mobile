@@ -85,4 +85,45 @@
         <item name="android:textColor">@color/text6</item>
         <item name="android:textAppearance">@style/medium14</item>
     </style>
+
+    <style name="badgeStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/blue</item>
+        <item name="android:backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="ticketPrice">
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/semibold22</item>
+    </style>
+
+    <style name="ticketTimeRange">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:textAppearance">@style/medium14Italic</item>
+    </style>
+
+    <style name="airlineCode">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text6</item>
+        <item name="android:textAppearance">@style/medium14Italic</item>
+    </style>
+
+    <style name="ticket_info" parent="fullWidthText">
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:textAppearance">@style/medium14</item>
+    </style>
+
+    <style name="badgeText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:layout_marginHorizontal">10dp</item>
+        <item name="android:textAppearance">@style/medium14Italic</item>
+    </style>
 </resources>

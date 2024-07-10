@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation(libs.rxjava3.retrofit.adapter)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)

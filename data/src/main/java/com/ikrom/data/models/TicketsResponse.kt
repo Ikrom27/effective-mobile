@@ -1,6 +1,7 @@
 package com.ikrom.data.models
 
 import com.google.gson.annotations.SerializedName
+import java.time.LocalDateTime
 
 data class TicketsResponse(
     @SerializedName("id") val id: Int,
