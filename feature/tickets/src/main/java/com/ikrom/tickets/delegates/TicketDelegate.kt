@@ -9,6 +9,8 @@ import com.example.ui.adapters.DelegateAdapter
 import com.example.utils.PriceUtils
 import com.ikrom.tickets.R
 import com.ikrom.tickets.databinding.ItemTicketBinding
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -44,8 +46,8 @@ class TicketDelegate: DelegateAdapter<TicketItem, TicketDelegate.ViewHolder>(Tic
 
         private fun calculateDuration(startTime: LocalDateTime, endTime: LocalDateTime): Float {
             val duration = Duration.between(startTime, endTime)
-            val hours = duration.toHours().toFloat()
-            return hours
+            val hours = duration.toMinutes() / 60f
+            return BigDecimal(hours.toDouble()).setScale(1, RoundingMode.HALF_UP).toFloat()
         }
 
         private fun getHHMM(dateTime: LocalDateTime): String {
