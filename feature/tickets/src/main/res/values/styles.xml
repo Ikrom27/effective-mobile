@@ -66,4 +66,12 @@
     <style name="titleDelegate" parent="fullWeightText">
         <item name="android:textAppearance">@style/titleTextAppearance</item>
     </style>
+
+    <style name="all_tickets_toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">@dimen/main_horizontal_margin</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:background">@color/surface_background</item>
+    </style>
 </resources>

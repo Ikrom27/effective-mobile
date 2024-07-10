@@ -2,7 +2,6 @@ package com.ikrom.tickets
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,7 @@ class ModalFragment : BottomSheetDialogFragment() {
         layoutConfigure(dialog) {bottomSheet ->
             bottomSheet?.let {
                 bottomSheet.setFullHeight()
-                bottomSheet.setBackgroundTint(requireContext(), com.example.ui.R.color.bottom_sheet_color)
+                bottomSheet.setBackgroundTint(requireContext(), com.example.ui.R.color.surface_background)
 
             }
         }
