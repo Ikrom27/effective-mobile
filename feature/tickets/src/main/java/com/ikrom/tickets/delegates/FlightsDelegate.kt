@@ -1,6 +1,7 @@
 package com.ikrom.tickets.delegates
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -32,6 +33,10 @@ class FlightsDelegate: DelegateAdapter<FlightsItem, FlightsDelegate.FlightsVH>(
         )
 
         override fun bind(item: FlightsItem) {
+            if (item.flights.isEmpty()){
+                binding.root.visibility = View.GONE
+                return
+            }
             for(i in 0 until 3){
                 if(item.flights.size <= i){
                     break
