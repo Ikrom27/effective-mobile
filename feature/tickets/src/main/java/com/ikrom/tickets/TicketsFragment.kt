@@ -33,6 +33,8 @@ import com.ikrom.tickets.delegates.WideButtonDelegate
 import com.ikrom.tickets.delegates.WideButtonItem
 import com.ikrom.tickets.delegates.buttons.DateBtnDelegate
 import com.ikrom.tickets.delegates.buttons.DateBtnItem
+import com.ikrom.tickets.delegates.buttons.FilterBtnDelegate
+import com.ikrom.tickets.delegates.buttons.FilterBtnItem
 import com.ikrom.tickets.delegates.buttons.PassengersNumBtnDelegate
 import com.ikrom.tickets.delegates.buttons.PassengersNumBtnItem
 import com.ikrom.tickets.delegates.buttons.ReturnFlightBtnDelegate
@@ -184,10 +186,12 @@ class TicketsFragment : Fragment() {
                 .add(DateBtnDelegate())
                 .add(PassengersNumBtnDelegate())
                 .add(ReturnFlightBtnDelegate())
+                .add(FilterBtnDelegate())
                 .build().apply {
                     add(ReturnFlightBtnItem("обратно"))
                     add(DateBtnItem(24, "фев", "суб"))
                     add(PassengersNumBtnItem(1, "эконом"))
+                    add(FilterBtnItem({}))
                 },
             itemDecoration = MarginItemDecoration(
                 startSpace = margin.toInt(),

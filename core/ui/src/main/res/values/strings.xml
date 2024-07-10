@@ -12,4 +12,6 @@
     <string name="travel_destination_hint">Destination - Turk</string>
 
     <string name="difficult_route_label">Difficult route</string>
+
+    <string name="filter_label">filter</string>
 </resources>

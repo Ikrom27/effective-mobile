@@ -10,4 +10,6 @@
     <string name="travel_destination_hint">Куда - Турция</string>
 
     <string name="difficult_route_label">Сложный маршрут</string>
+
+    <string name="filter_label">фильтр</string>
 </resources>
